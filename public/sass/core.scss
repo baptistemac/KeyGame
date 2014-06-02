@@ -1,0 +1,36 @@
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+// Box-model :  [width] = [element-width] + [padding] + [borders]
+*,
+*:after,
+*:before {
+    box-sizing: border-box;
+}
+
+html, body, .container, #screens, .screen {
+	height: 100%;
+}
+
+body {
+	font: 100%/1.5 $primaryFont;
+}
+
+
+
+// classes utiles
+
+.hide { display: none !important; }
+
+
+::-moz-selection { background: black; color: #FFFFFF; text-shadow: none; }
+::selection { background: black; color: #FFFFFF; text-shadow: none; opacity: .1; }
+
+
+::-webkit-input-placeholder { color: #FFFFFF; }
+:-moz-placeholder { color: #FFFFFF; } 
+::-moz-placeholder { color: #FFFFFF; }
+:-ms-input-placeholder { color: #FFFFFF; } 

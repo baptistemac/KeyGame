@@ -1,0 +1,789 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ma",
+				"margin-top"
+			],
+			[
+				"ba",
+				"background-color"
+			],
+			[
+				"commentaire",
+				"commentaire"
+			],
+			[
+				"fl",
+				"float"
+			],
+			[
+				"padd",
+				"padding-right"
+			],
+			[
+				"getDate",
+				"getDateYear"
+			],
+			[
+				"bac",
+				"background-color"
+			],
+			[
+				"n",
+				"none"
+			],
+			[
+				"date",
+				"Date"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"window",
+				"window_height"
+			],
+			[
+				"z",
+				"z-index"
+			],
+			[
+				"op",
+				"opacity"
+			],
+			[
+				"r",
+				"right"
+			],
+			[
+				"he",
+				"height"
+			],
+			[
+				"te",
+				"text-align"
+			],
+			[
+				"po",
+				"PostsListView"
+			],
+			[
+				"get",
+				"get_item"
+			],
+			[
+				"pre",
+				"preventDefault"
+			],
+			[
+				"back",
+				"background-color"
+			],
+			[
+				"pad",
+				"padding"
+			],
+			[
+				"tra",
+				"translateX"
+			],
+			[
+				"bo",
+				"bottom"
+			],
+			[
+				"a",
+				"absolute"
+			],
+			[
+				"add",
+				"addClass"
+			],
+			[
+				"log",
+				"loginFormView"
+			],
+			[
+				"co",
+				"color"
+			],
+			[
+				"curre",
+				"currentTarget"
+			],
+			[
+				"cur",
+				"currentTarget"
+			],
+			[
+				"con",
+				"console"
+			],
+			[
+				"on",
+				"onprogress"
+			],
+			[
+				"item",
+				"items"
+			],
+			[
+				"to",
+				"toJSON"
+			],
+			[
+				"rend",
+				"renderedContent"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"b",
+				"bounds"
+			],
+			[
+				"c",
+				"center"
+			],
+			[
+				"s",
+				"shaped"
+			],
+			[
+				"bor",
+				"border-radius"
+			],
+			[
+				"li",
+				"list-style-type"
+			],
+			[
+				"ge",
+				"getElementById"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "app.js",
+			"settings":
+			{
+				"buffer_size": 8922,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "package.json",
+			"settings":
+			{
+				"buffer_size": 304,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/index.html",
+			"settings":
+			{
+				"buffer_size": 3937,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/main.js",
+			"settings":
+			{
+				"buffer_size": 981,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/models/item.js",
+			"settings":
+			{
+				"buffer_size": 2090,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "public/views/MainView.js",
+			"settings":
+			{
+				"buffer_size": 1133,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 139.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/WatchLater-v8/app.js",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/WatchLater-v8/package.json",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/json/json.php",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/mobile/test2/dragend.js",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/WatchLater-v8/public/sass/item.scss",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/models/item.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/views/CalendarView.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/views/ItemsListView.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/views/MainView.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/routes.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/main.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/index.html",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/sass/core.scss",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/sass/reset.scss",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/sass/lang.scss",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/sass/cheesystory.scss",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/sass/_base.scss",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/test/slideToucher-master/index.html",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/mobile/index.html",
+		"/Users/baptistemac/Downloads/mobile-ui-patterns-master/page-swipe/index.html",
+		"/Users/baptistemac/Downloads/mobile-ui-patterns-master/page-swipe/iscroll.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/mobile/js/demo.js",
+		"/Users/baptistemac/Library/Caches/Cleanup At Startup/Transmit/DB62C058-BD0C-46C2-B27B-B9B94F23027F/index.html",
+		"/Users/baptistemac/Downloads/source/css/style.css",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/libs/vendors/jquery.mousewheel.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v22/index.php",
+		"/Users/baptistemac/Downloads/source/index.html",
+		"/Applications/MAMP/htdocs/grit/benchmarks.rb",
+		"/Users/baptistemac/Downloads/source/js/swipe.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v22/js/cheesystory.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v22/js/plugins.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v22/js/script.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v22/js/visuel.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/index.php",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/ftp/css/fonts.css",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v22/css/boilerplate.css",
+		"/Users/baptistemac/Dropbox/WatchLater/v3/app.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/json/json.php",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/json/_json.php",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/json/json2.php",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/htaccess.txt",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/CheesyStory.js",
+		"/Users/baptistemac/Dropbox/WatchLater/v3/public/models/item.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/SmartD.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/public/js/nav.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/sass/boilerplate.css",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/sass/_base.scss",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/js/keyboard.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/js/_cheesystory.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/sass/boilerplate.scss",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/sass/cheesystory.scss",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/js/visuel.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/js/cheesystory.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/js/plugins.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/app.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/web-test.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/server.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/package.json",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/items.db",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/site/blog.db",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/sass/style.scss",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/WatchLater-v8/public/sass/watchlater.scss",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/WatchLater-v8/public/sass/_base.scss",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/WatchLater-v8/public/sass/core.scss",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/js/header.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/js/script.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/js/lang.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/js/calljson.js",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/sass/style.css",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/sass/fonts.css",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/sass/screen.scss",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/sass/print.scss",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/sass/ie.scss",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/v2/script/connect.php",
+		"/Applications/MAMP/htdocs/01 - Chessy Story/index.php",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/WatchLater-v8/public/index.html",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/public/models/item.js",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/public/views/EditboardView.js",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/public/views/BoardView.js",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/public/views/MainView.js",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/public/main.js",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/public/routes.js",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/public/sass/reset.scss",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/public/sass/smartd.scss",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/public/sass/core.scss",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/public/sass/_base.scss",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/public/js/nav.js",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/app.js",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/public/index.html",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/public/SmartD.js",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/public/css/core.css",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/blog.db",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/items.db",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/public/UI-Test1.sublime-project",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/public/UI-Test1.sublime-workspace",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/UI-test1.sublime-project",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/server.js",
+		"/Applications/MAMP/htdocs/10 - SmartD/site/UI-test1.sublime-workspace",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/sass/core.scss",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/sass/item.scss",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/index.html",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/models/item.js",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/views/OptionsView.js",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/views/PostsListView.js",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/views/AddItemView.js",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/views/MainView.js",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/views/LoginFormView.js",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/views/LoginView.js",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/main.js",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/routes.js",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/sass/sidebar.scss",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/sass/_base.scss",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/sass/reset.scss",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/sass/watchlater.scss",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/css/item.css",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/css/sidebar.css",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/sass/admin.scss",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/app.js",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/sass/login.scss",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/v8.sublime-project",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/css/login.css",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/css/reset.css",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/sass/dragdrop.scss",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/node_modules/nstore/nstore.js",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/blog.db",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/views/PostView.js",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/WatchLater.js",
+		"/Applications/MAMP/htdocs/09 - WatchLater/backbone/v8/public/stylesheets/watchlater.css"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"",
+			"<file>",
+			"<open files>",
+			"",
+			"file",
+			"",
+			"<open files>,/Applications/MAMP/htdocs/09 - WatchLater/backbone/v7",
+			"<open files>,/Applications/MAMP/htdocs/09 - WatchLater/backbone/v4"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"3%",
+			"heade",
+			"calen",
+			"sha",
+			"open",
+			"2121",
+			"focus",
+			"init_month",
+			"date",
+			"sha",
+			"image",
+			"radius",
+			"current_m",
+			"opa",
+			"toggleClass",
+			"url_pa",
+			"desc",
+			"mouse",
+			"deltaFactor",
+			"handler",
+			"el",
+			"comment",
+			"lang",
+			"fr",
+			".en",
+			"en",
+			"fr",
+			"lang",
+			"hihi",
+			"items",
+			"_vis",
+			"_visue",
+			"row",
+			"items",
+			"smartd",
+			"display_image",
+			"prev_",
+			"prev_visuel",
+			"overf",
+			"html",
+			"build_v",
+			"jsondata",
+			"jsondata2",
+			"set_current_visuel",
+			"active_event_comment",
+			"active_fleche",
+			"fle",
+			"init",
+			"css",
+			"ul",
+			"header",
+			"css",
+			"btn",
+			"watc",
+			"droite",
+			"translate3d",
+			"translate#d",
+			"items",
+			"SPRITE",
+			"curr",
+			"tit",
+			"destro",
+			"box-sizing",
+			"gray1",
+			"b3",
+			"d3",
+			"render",
+			"collection",
+			"item_save",
+			"item_update",
+			"remove_contenteditable",
+			"update",
+			"btn-create",
+			"hide",
+			".hide",
+			"save",
+			"curr",
+			"make_contenteditable",
+			"id",
+			"save",
+			".img",
+			".info",
+			"el",
+			"save",
+			"brig",
+			"scale",
+			"rotate",
+			"pink",
+			"sidebar",
+			"sidebar-open",
+			"cursor",
+			"_",
+			"img-edit",
+			"item-update-link",
+			"switc",
+			"read",
+			"1",
+			"link",
+			"item_title_author_input",
+			"item-update-link",
+			"sprite",
+			"wrap-",
+			"over",
+			"overlay",
+			"overl",
+			"opa",
+			"f5d7d0",
+			"$Color",
+			"$",
+			"$Color",
+			"Color",
+			"#ee6242",
+			"#c94c30",
+			"radi",
+			"}",
+			"{",
+			";",
+			";\n",
+			";^\n",
+			";\n",
+			";",
+			"160px",
+			";",
+			"80px",
+			".2s",
+			"border-radius: 50px;",
+			".2s",
+			"2cc288"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"$Color1Dark",
+			"",
+			".5s",
+			"d35133",
+			"ee6242",
+			"libs",
+			"fileuploadvalidate: '",
+			"//",
+			"    fileuploadvalidate: ",
+			"",
+			"//",
+			"'"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "app.js",
+					"settings":
+					{
+						"buffer_size": 8922,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1350,
+								1350
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "package.json",
+					"settings":
+					{
+						"buffer_size": 304,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								20,
+								20
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "public/index.html",
+					"settings":
+					{
+						"buffer_size": 3937,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 441.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "public/main.js",
+					"settings":
+					{
+						"buffer_size": 981,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "public/models/item.js",
+					"settings":
+					{
+						"buffer_size": 2090,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "public/views/MainView.js",
+					"settings":
+					{
+						"buffer_size": 1133,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 205.0,
+	"status_bar_visible": true
+}

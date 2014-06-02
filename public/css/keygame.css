@@ -1,0 +1,239 @@
+@import url(http://fonts.googleapis.com/css?family=Josefin+Sans);
+/* Fonts */
+/* Colors */
+/* Times */
+/* line 2, ../sass/reset.scss */
+html, body, ul, ol, h1, h2, h3 {
+  padding: 0;
+  margin: 0;
+}
+
+/* line 7, ../sass/reset.scss */
+a {
+  text-decoration: none;
+}
+
+/* line 9, ../sass/reset.scss */
+p {
+  margin: 0;
+}
+
+/* line 11, ../sass/reset.scss */
+ul {
+  list-style-type: none;
+}
+
+/* line 2, ../sass/core.scss */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* line 10, ../sass/core.scss */
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+/* line 14, ../sass/core.scss */
+html, body, .container, #screens, .screen {
+  height: 100%;
+}
+
+/* line 18, ../sass/core.scss */
+body {
+  font: 100%/1.5 "Josefin Sans", "sans-serif";
+}
+
+/* line 26, ../sass/core.scss */
+.hide {
+  display: none !important;
+}
+
+/* line 29, ../sass/core.scss */
+::-moz-selection {
+  background: black;
+  color: #FFFFFF;
+  text-shadow: none;
+}
+
+/* line 30, ../sass/core.scss */
+::selection {
+  background: black;
+  color: #FFFFFF;
+  text-shadow: none;
+  opacity: .1;
+}
+
+/* line 33, ../sass/core.scss */
+::-webkit-input-placeholder {
+  color: #FFFFFF;
+}
+
+/* line 34, ../sass/core.scss */
+:-moz-placeholder {
+  color: #FFFFFF;
+}
+
+/* line 35, ../sass/core.scss */
+::-moz-placeholder {
+  color: #FFFFFF;
+}
+
+/* line 36, ../sass/core.scss */
+:-ms-input-placeholder {
+  color: #FFFFFF;
+}
+
+/* line 2, ../sass/keyboard.scss */
+#keyboard {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  margin-left: -232px;
+}
+/* line 11, ../sass/keyboard.scss */
+#keyboard li {
+  float: left;
+  margin: 0 2px 2px 0;
+  padding-top: 10px;
+  width: 30px;
+  height: 30px;
+  font-size: .8em;
+  line-height: 10px;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+}
+/* line 24, ../sass/keyboard.scss */
+#keyboard li :hover {
+  border-color: #e5e5e5;
+  cursor: pointer;
+}
+/* line 33, ../sass/keyboard.scss */
+#keyboard .capslock,
+#keyboard .tab,
+#keyboard .left-shift,
+#keyboard .fn {
+  clear: left;
+}
+/* line 37, ../sass/keyboard.scss */
+#keyboard .tab,
+#keyboard .delete {
+  width: 46px;
+}
+/* line 40, ../sass/keyboard.scss */
+#keyboard .capslock {
+  width: 53px;
+}
+/* line 43, ../sass/keyboard.scss */
+#keyboard .return {
+  width: 55px;
+}
+/* line 46, ../sass/keyboard.scss */
+#keyboard .left-shift {
+  width: 37px;
+}
+/* line 49, ../sass/keyboard.scss */
+#keyboard .right-shift {
+  width: 71px;
+}
+/* line 52, ../sass/keyboard.scss */
+#keyboard .arrow {
+  font-size: 8px;
+}
+/* line 55, ../sass/keyboard.scss */
+#keyboard .letter {
+  text-transform: uppercase;
+}
+/* line 59, ../sass/keyboard.scss */
+#keyboard .press {
+  background: blue;
+}
+/* line 62, ../sass/keyboard.scss */
+#keyboard .princesse {
+  background: pink;
+}
+/* line 65, ../sass/keyboard.scss */
+#keyboard .rival {
+  background: red;
+}
+
+/* line 70, ../sass/keyboard.scss */
+.lastitem {
+  margin-right: 0;
+}
+
+/* line 73, ../sass/keyboard.scss */
+.uppercase {
+  text-transform: uppercase;
+}
+
+/* line 76, ../sass/keyboard.scss */
+#keyboard .space {
+  width: 143px;
+}
+
+/* line 79, ../sass/keyboard.scss */
+.on {
+  display: none;
+}
+
+/* line 9, ../sass/keygame.scss */
+.container {
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+/* line 13, ../sass/keygame.scss */
+.container h1 {
+  display: none;
+}
+/* line 17, ../sass/keygame.scss */
+.container .screen p {
+  padding-top: 80px;
+  font-size: 2em;
+  font-weight: 600;
+}
+/* line 22, ../sass/keygame.scss */
+.container .screen p > span {
+  display: block;
+  font-size: .7em;
+  font-weight: 500;
+}
+/* line 29, ../sass/keygame.scss */
+.container .screen .key-style {
+  -webkit-border-radius: 4px 4px;
+  -moz-border-radius: 4px / 4px;
+  border-radius: 4px / 4px;
+  border: 1px solid white;
+  color: white;
+  padding: 4px 12px;
+  display: inline-block;
+}
+/* line 35, ../sass/keygame.scss */
+.container .screen .key-style.space {
+  width: 250px;
+}
+/* line 38, ../sass/keygame.scss */
+.container .screen .key-style.block {
+  display: block;
+  margin: 8px auto;
+}
+/* line 42, ../sass/keygame.scss */
+.container .screen .key-style.press {
+  background-color: white;
+}
+/* line 47, ../sass/keygame.scss */
+.container .screen .img {
+  height: 200px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: 30%;
+  background-position: top center;
+}

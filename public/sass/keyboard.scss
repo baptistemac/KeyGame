@@ -1,0 +1,81 @@
+
+#keyboard {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	position: absolute;
+	bottom: 50px;
+	left: 50%;
+	margin-left: -232px;
+
+	li {
+		float: left;
+		margin: 0 2px 2px 0;
+		padding-top: 10px;
+		width: 30px;
+		height: 30px;
+		font-size: .8em;
+		line-height: 10px;
+		text-align: center;
+		background: rgba(255,255,255,.3);
+		border: 1px solid rgba(255,255,255,.3);
+		-moz-border-radius: 2px;
+		-webkit-border-radius: 2px;
+		:hover {
+			border-color: #e5e5e5;
+			cursor: pointer;
+		}
+	}
+
+	.capslock, 
+	.tab, 
+	.left-shift, 
+	.fn {
+		clear: left;
+	}
+	.tab, 
+	.delete {
+		width: 46px;
+	}
+	.capslock {
+		width: 53px;
+	}
+	.return {
+		width: 55px;
+	}
+	.left-shift {
+		width: 37px;
+	}
+	.right-shift {
+		width: 71px;
+	}
+	.arrow {
+		font-size: 8px;
+	}
+	.letter {
+		text-transform: uppercase;
+	}
+
+	.press {
+		background: blue;
+	}
+	.princesse {
+	  background: pink;
+	}
+	.rival {
+		background: red;
+	}
+}
+
+.lastitem {
+	margin-right: 0;
+}
+.uppercase {
+	text-transform: uppercase;
+}
+#keyboard .space {
+	width: 143px;
+}
+.on {
+	display: none;
+}

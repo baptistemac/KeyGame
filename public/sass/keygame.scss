@@ -1,0 +1,55 @@
+@import "compass";
+
+@import "base";
+@import "reset";
+@import "core";
+@import "keyboard";
+
+
+.container {
+	color: rgba(0,0,0,.5);
+	text-align: center;
+
+	h1 {
+		display: none;
+	}
+	.screen {
+		p {
+			padding-top: 80px;
+			font-size: 2em;
+			font-weight: 600;
+
+			> span {
+				display: block;
+				font-size: .7em;
+				font-weight: 500;
+			}
+		}
+
+		.key-style {
+			@include border-radius(4px, 4px);
+			border: 1px solid white;
+			color: white;
+			padding: 4px 12px;
+			display: inline-block;
+			&.space {
+				width: 250px;
+			}
+			&.block { 
+				display: block;
+				margin: 8px auto;
+			}
+			&.press {
+				background-color: white;
+			}
+		}
+
+		.img {
+			height: 200px;
+			width: 100%;
+			background-repeat: no-repeat;
+			background-size: 30%;
+			background-position: top center;
+		}
+	}
+}
