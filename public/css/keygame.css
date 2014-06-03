@@ -157,30 +157,34 @@ body {
   background: blue;
 }
 /* line 62, ../sass/keyboard.scss */
+#keyboard .proximity {
+  background: Royalblue;
+}
+/* line 65, ../sass/keyboard.scss */
 #keyboard .princesse {
   background: pink;
 }
-/* line 65, ../sass/keyboard.scss */
+/* line 68, ../sass/keyboard.scss */
 #keyboard .rival {
   background: red;
 }
 
-/* line 70, ../sass/keyboard.scss */
+/* line 73, ../sass/keyboard.scss */
 .lastitem {
   margin-right: 0;
 }
 
-/* line 73, ../sass/keyboard.scss */
+/* line 76, ../sass/keyboard.scss */
 .uppercase {
   text-transform: uppercase;
 }
 
-/* line 76, ../sass/keyboard.scss */
+/* line 79, ../sass/keyboard.scss */
 #keyboard .space {
   width: 143px;
 }
 
-/* line 79, ../sass/keyboard.scss */
+/* line 82, ../sass/keyboard.scss */
 .on {
   display: none;
 }
@@ -194,19 +198,26 @@ body {
 .container h1 {
   display: none;
 }
-/* line 17, ../sass/keygame.scss */
+/* line 16, ../sass/keygame.scss */
+.container .screen {
+  -webkit-transition: background-color 2s ease-in-out;
+  -moz-transition: background-color 2s ease-in-out;
+  -o-transition: background-color 2s ease-in-out;
+  transition: background-color 2s ease-in-out;
+}
+/* line 18, ../sass/keygame.scss */
 .container .screen p {
   padding-top: 80px;
   font-size: 2em;
   font-weight: 600;
 }
-/* line 22, ../sass/keygame.scss */
+/* line 23, ../sass/keygame.scss */
 .container .screen p > span {
   display: block;
   font-size: .7em;
   font-weight: 500;
 }
-/* line 29, ../sass/keygame.scss */
+/* line 30, ../sass/keygame.scss */
 .container .screen .key-style {
   -webkit-border-radius: 4px 4px;
   -moz-border-radius: 4px / 4px;
@@ -216,20 +227,20 @@ body {
   padding: 4px 12px;
   display: inline-block;
 }
-/* line 35, ../sass/keygame.scss */
+/* line 36, ../sass/keygame.scss */
 .container .screen .key-style.space {
   width: 250px;
 }
-/* line 38, ../sass/keygame.scss */
+/* line 39, ../sass/keygame.scss */
 .container .screen .key-style.block {
   display: block;
   margin: 8px auto;
 }
-/* line 42, ../sass/keygame.scss */
+/* line 43, ../sass/keygame.scss */
 .container .screen .key-style.press {
   background-color: white;
 }
-/* line 47, ../sass/keygame.scss */
+/* line 48, ../sass/keygame.scss */
 .container .screen .img {
   height: 200px;
   width: 100%;

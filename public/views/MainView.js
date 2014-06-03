@@ -30,6 +30,11 @@ var KeyGame = (function(keygame) {
       // On détermine la position de la princesse
       this.mapView.positionnerPrincesse();
 
+      $("#keyboard li").each( function (index){
+        console.log( index + ": " + $( this ).text() );
+        $(this).text( $(this).attr("id") );
+      });
+
       this.render();
     },
 
@@ -80,6 +85,8 @@ var KeyGame = (function(keygame) {
           var screen = this.mapView.screens.liste[screen_index];
           this.screensView.render(screen);
           this.mapView.tracker_push(e.which);
+
+          this.mapView.detectRivalProximity(e.which);
 
           //Rival play
           this.rival_play();

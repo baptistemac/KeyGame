@@ -69,30 +69,34 @@
   background: blue;
 }
 /* line 62, ../sass/keyboard.scss */
+#keyboard .proximity {
+  background: Royalblue;
+}
+/* line 65, ../sass/keyboard.scss */
 #keyboard .princesse {
   background: pink;
 }
-/* line 65, ../sass/keyboard.scss */
+/* line 68, ../sass/keyboard.scss */
 #keyboard .rival {
   background: red;
 }
 
-/* line 70, ../sass/keyboard.scss */
+/* line 73, ../sass/keyboard.scss */
 .lastitem {
   margin-right: 0;
 }
 
-/* line 73, ../sass/keyboard.scss */
+/* line 76, ../sass/keyboard.scss */
 .uppercase {
   text-transform: uppercase;
 }
 
-/* line 76, ../sass/keyboard.scss */
+/* line 79, ../sass/keyboard.scss */
 #keyboard .space {
   width: 143px;
 }
 
-/* line 79, ../sass/keyboard.scss */
+/* line 82, ../sass/keyboard.scss */
 .on {
   display: none;
 }
