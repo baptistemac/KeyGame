@@ -15,17 +15,44 @@
 	}
 	.screen {
 		@include transition(background-color 2s ease-in-out);
-		p {
-			padding-top: 80px;
-			font-size: 2em;
-			font-weight: 600;
 
-			> span {
+		.box {
+			padding-top: 80px;
+			max-width: 670px;
+			margin: 0 auto;
+
+			/*
+			:first-letter {
+				font-size: 2em;
+				border: 1px solid rgba(0,0,0,.1);
+				@include border-radius(5px);
+				padding: 13px 18px 7px 18px;
+				margin-right: -18px;
+			}
+			*/
+
+			.title {
+				font-size: 3em;
+			}
+			p {
+				//font-size: 1em;
+				font-weight: 600;
+
+				> span {
+					display: block;
+					//font-size: .7em;
+					font-weight: 500;
+				}
+
+			}
+			strong {
+				font-size: 1.1em;
+				font-weight: bold;
 				display: block;
-				font-size: .7em;
-				font-weight: 500;
 			}
 		}
+
+
 
 		.key-style {
 			@include border-radius(4px, 4px);

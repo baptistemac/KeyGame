@@ -13,9 +13,12 @@
     <!-- /*======= Screen =======*/ -->
     <script type="text/template" id="screens_template">
       {{#item}}
-        <div class="screen" style="background-color:{{color}}">
-          <p>{{{text}}}</p>
+        <div class="screen" style="background-color:{{color}}; {{#pattern}}background-image:url('assets/img/{{pattern}}');{{/pattern}}">
+          <div class="box"><p>
+            {{{text}}}
             {{{answers}}}
+            </p>
+          </div>
         </div>
       {{/item}}
 
@@ -24,71 +27,75 @@
     <!-- /*======= fin de Screen =======*/ -->
     
     <ul id="keyboard" style="display:none;">
-           <li class="symbol" id="191"><span class="off">`</span><span class="on">~</span></li>
-           <li class="symbol" id="49"><span class="off">1</span><span class="on">!</span></li>
-           <li class="symbol" id="50"><span class="off">2</span><span class="on">@</span></li>
-           <li class="symbol" id="51"><span class="off">3</span><span class="on">#</span></li>
-           <li class="symbol" id="52"><span class="off">4</span><span class="on">$</span></li>
-           <li class="symbol" id="53"><span class="off">5</span><span class="on">%</span></li>
-           <li class="symbol" id="54"><span class="off">6</span><span class="on">^</span></li>
-           <li class="symbol" id="55"><span class="off">7</span><span class="on">&amp;</span></li>
-           <li class="symbol" id="56"><span class="off">8</span><span class="on">*</span></li>
-           <li class="symbol" id="57"><span class="off">9</span><span class="on">(</span></li>
-           <li class="symbol" id="48"><span class="off">0</span><span class="on">)</span></li>
-           <li class="symbol" id="189"><span class="off">-</span><span class="on">_</span></li>
-           <li class="symbol" id="187"><span class="off">=</span><span class="on">+</span></li>
-           <li class="delete lastitem" id="8">delete</li>
-           <li class="tab" id="9">tab</li>
-           <li class="letter" id="81">q</li>
-           <li class="letter" id="87">w</li>
-           <li class="letter" id="69">e</li>
-           <li class="letter" id="82">r</li>
-           <li class="letter" id="84">t</li>
-           <li class="letter" id="89">y</li>
-           <li class="letter" id="85">u</li>
-           <li class="letter" id="73">i</li>
-           <li class="letter" id="79">o</li>
-           <li class="letter" id="80">p</li>
-           <li class="symbol" id="219"><span class="off">[</span><span class="on">{</span></li>
-           <li class="symbol" id="221"><span class="off">]</span><span class="on">}</span></li>
-           <li class="symbol lastitem"><span class="off">\</span><span class="on">|</span></li>
-           <li class="capslock" id="20">caps lock</li>
-           <li class="letter" id="65">a</li>
-           <li class="letter" id="83">s</li>
-           <li class="letter" id="68">d</li>
-           <li class="letter" id="70">f</li>
-           <li class="letter" id="71">g</li>
-           <li class="letter" id="72">h</li>
-           <li class="letter" id="74">j</li>
-           <li class="letter" id="75">k</li>
-           <li class="letter" id="76">l</li>
-           <li class="symbol" id="186"><span class="off">;</span><span class="on">:</span></li>
-           <li class="symbol" id="222"><span class="off">'</span><span class="on">&quot;</span></li>
-           <li class="return lastitem" id="13">return</li>
-           <li class="left-shift" id="16">shift</li>
-           <li class="u-accent" id="192">ù</li>
-           <li class="letter" id="90">z</li>
-           <li class="letter" id="88">x</li>
-           <li class="letter" id="67">c</li>
-           <li class="letter" id="86">v</li>
-           <li class="letter" id="66">b</li>
-           <li class="letter" id="78">n</li>
-           <li class="letter" id="77">m</li>
-           <li class="symbol" id="188"><span class="off">,</span><span class="on">&lt;</span></li>
-           <li class="symbol" id="190"><span class="off">.</span><span class="on">&gt;</span></li>
-           <li class="symbol" id="191"><span class="off">/</span><span class="on">?</span></li>
-           <li class="right-shift lastitem" id="16">shift</li>
-           <li class="fn" id="">fn</li>
-           <li class="ctrl" id="17">ctrl</li>
-           <li class="left-alt" id="18">alt</li>
-           <li class="left-cmd" id="91">cmd</li>
-           <li class="space lastitem" id="32">&nbsp;</li>
-           <li class="right-cmd" id="93">cmd</li>
-           <li class="right-alt" id="18">alt</li>
-           <li class="arrow left" id="37">◀</li>
-           <li class="arrow top" id="38">▲</li>
-           <li class="arrow right" id="39">▶</li>
-           <li class="arrow bottom" id="40">▼</li>
+           <li class="symbol key-191"><span class="off">/</span><span class="on">~</span></li>
+           <li class="symbol key-49"><span class="off">1</span><span class="on">!</span></li>
+           <li class="symbol key-50"><span class="off">2</span><span class="on">@</span></li>
+           <li class="symbol key-51"><span class="off">3</span><span class="on">#</span></li>
+           <li class="symbol key-52"><span class="off">4</span><span class="on">$</span></li>
+           <li class="symbol key-53"><span class="off">5</span><span class="on">%</span></li>
+           <li class="symbol key-54"><span class="off">6</span><span class="on">^</span></li>
+           <li class="symbol key-55"><span class="off">7</span><span class="on">&amp;</span></li>
+           <li class="symbol key-56"><span class="off">8</span><span class="on">*</span></li>
+           <li class="symbol key-57"><span class="off">9</span><span class="on">(</span></li>
+           <li class="symbol key-48"><span class="off">0</span><span class="on">)</span></li>
+           <li class="symbol key-189"><span class="off">-</span><span class="on">_</span></li>
+           <li class="symbol key-187"><span class="off">=</span><span class="on">+</span></li>
+           <li class="delete key-8 lastitem">delete</li>
+
+           <li class="tab key-9">tab</li>
+           <li class="letter key-81">q</li>
+           <li class="letter key-87">w</li>
+           <li class="letter key-69">e</li>
+           <li class="letter key-82">r</li>
+           <li class="letter key-84">t</li>
+           <li class="letter key-89">y</li>
+           <li class="letter key-85">u</li>
+           <li class="letter key-73">i</li>
+           <li class="letter key-79">o</li>
+           <li class="letter key-80">p</li>
+           <li class="symbol key-219"><span class="off">^</span><span class="on">{</span></li>
+           <li class="symbol key-221 lastitem"><span class="off">ç</span><span class="on">}</span></li>
+
+           <li class="capslock key-20">caps lock</li>
+           <li class="letter key-65">a</li>
+           <li class="letter key-83">s</li>
+           <li class="letter key-68">d</li>
+           <li class="letter key-70">f</li>
+           <li class="letter key-71">g</li>
+           <li class="letter key-72">h</li>
+           <li class="letter key-74">j</li>
+           <li class="letter key-75">k</li>
+           <li class="letter key-76">l</li>
+           <li class="symbol key-186"><span class="off">;</span><span class="on">:</span></li>
+           <li class="symbol key-222"><span class="off">è</span><span class="on">&quot;</span></li>
+           <li class="symbol key-220">à</li>
+           <li class="return key-13 lastitem">↩</li>
+
+           <li class="left-shift key-16">⇧</li>
+           <li class="u-accent key-192">ù</li>
+           <li class="letter key-90">z</li>
+           <li class="letter key-88">x</li>
+           <li class="letter key-67">c</li>
+           <li class="letter key-86">v</li>
+           <li class="letter key-66">b</li>
+           <li class="letter key-78">n</li>
+           <li class="letter key-77">m</li>
+           <li class="symbol key-188"><span class="off">,</span><span class="on">&lt;</span></li>
+           <li class="symbol key-190"><span class="off">.</span><span class="on">&gt;</span></li>
+           <li class="symbol key-191"><span class="off">é</span><span class="on">?</span></li>
+           <li class="right-shift key-16 lastitem">⇧</li>
+
+           <li class="fn insensitive">fn</li>
+           <li class="ctrl key-17">ctrl</li>
+           <li class="left-alt key-18">alt</li>
+           <li class="left-cmd key-91">cmd</li>
+           <li class="space lastitem key-32">&nbsp;</li>
+           <li class="right-cmd key-93">cmd</li>
+           <li class="right-alt key-18">alt</li>
+           <li class="arrow left key-37">◀</li>
+           <li class="arrow top key-38">▲</li>
+           <li class="arrow right key-39">▶</li>
+           <li class="arrow bottom key-40">▼</li>
     </ul>
     
   </div> <!-- fin de .container -->

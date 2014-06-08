@@ -1,25 +1,32 @@
 yepnope({
   load: {
-    jquery: 'libs/vendors/jquery-1.10.2.js',
-    underscore: 'libs/vendors/underscore.js',
-    backbone: 'libs/vendors/backbone.js',
-    mustache: 'libs/vendors/mustache.js',
+    jquery:       'libs/vendors/jquery-1.10.2.js',
+    underscore:   'libs/vendors/underscore.js',
+    backbone:     'libs/vendors/backbone.js',
+    mustache:     'libs/vendors/mustache.js',
 
     //NameSpace
-    keygame: 'KeyGame.js',
+    keygame:      'KeyGame.js',
 
     //Models
-    posts: 'models/item.js',
+    piege         :'models/bonus1.js',
+    posts:        'models/item.js',
 
     //Controllers
-    mainview: 'views/MainView.js',
-    screenview: 'views/ScreensView.js',
-    mapview: 'views/MapView.js',
+    mainview      :'views/MainView.js',
+    screenview    :'views/ScreensView.js',
+    mapview       :'views/MapView.js',
+    princessview  :'views/PrincessView.js',
+    rivalview     :'views/RivalView.js',
+    keyboardview  :'views/KeyboardView.js',
+    fieldview     :'views/FieldView.js',
+    heroView      :'views/HeroView.js',
 
     //Routes
-    routes: 'routes.js',
+    routes:       'routes.js',
 
     //autre
+    functions:    'src/functions.js'
 
   },
 
@@ -37,9 +44,9 @@ yepnope({
 
       //window.itemscollection = new KeyGame.Collections.Items();
 
-      window.mainView = new KeyGame.Views.MainView({
-        //collection: itemscollection
-      });
+      window.keyboard = new KeyGame.Views.KeyboardView();
+
+      window.mainView = new KeyGame.Views.MainView();
 
       window.router = new KeyGame.Router.RoutesManager({
         //collection: itemscollection

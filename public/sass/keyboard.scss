@@ -1,30 +1,27 @@
 
+
 #keyboard {
-	margin: 0;
-	padding: 0;
-	list-style: none;
 	position: absolute;
+	width: 466px;	
+	height: 160px;
 	bottom: 50px;
 	left: 50%;
-	margin-left: -232px;
+	margin-left: -233px;
 
 	li {
+		position: relative;
 		float: left;
 		margin: 0 2px 2px 0;
 		padding-top: 10px;
 		width: 30px;
 		height: 30px;
-		font-size: .8em;
+		font-size: .6em;
 		line-height: 10px;
 		text-align: center;
 		background: rgba(255,255,255,.3);
 		border: 1px solid rgba(255,255,255,.3);
-		-moz-border-radius: 2px;
-		-webkit-border-radius: 2px;
-		:hover {
-			border-color: #e5e5e5;
-			cursor: pointer;
-		}
+		@include border-radius(2px);
+		cursor: default;
 	}
 
 	.capslock, 
@@ -41,7 +38,23 @@
 		width: 53px;
 	}
 	.return {
-		width: 55px;
+		position: absolute;
+		width: 23px;
+		height: 62px;
+		top: 32px;
+		right: 2px;
+		padding: 12px 4px 0 0;
+		&:before {
+			content: '';
+			position: absolute;
+			width: 8px;
+			height: 30px;
+			background: inherit;
+			border: inherit;
+			border-right: transparent;
+			top: -1px;		
+			right: 21px;
+		}
 	}
 	.left-shift {
 		width: 37px;
@@ -49,18 +62,75 @@
 	.right-shift {
 		width: 71px;
 	}
+	.space {
+		width: 143px;
+	}
 	.arrow {
 		font-size: 8px;
 	}
 	.letter {
 		text-transform: uppercase;
 	}
+	.on {
+		display: none;
+	}
+	.insensitive {
+		background: rgba(255,255,255,.2);
+		border: 1px solid rgba(255,255,255,.2);
+	}
+	.double {
+		@include opacity(.3);
+	}
 
+	// Terrain
+	.marais {
+		background-color: #f7ede2;
+	}
+	.foret {
+		background-color: #cae9da;
+	}
+	.mer {
+		background-color: #ecf5fc;
+	}
+	.montagne {
+		background-color: #f7e2f6;
+	}
+	// Fin de terrain
+
+	// Bonus et malus
+	.bonus1 {
+		background-image: url('../assets/img/objects/hat.png');
+		background-repeat: no-repeat;
+		background-size: 100%;
+	}
+	.bonus2 {
+
+	}
+	.malus1 {
+
+	}
+	// Fin de bonus et malus
+
+	// Changeant
 	.press {
-		background: blue;
+		border-color: grey;
+	}
+	.hero {
+		&:after {
+			content: '';
+			display: block;
+			width: 26px;
+			height: 26px;
+			margin: -19px auto 0 auto;
+			border: 1px solid rgba(0,0,0,.3);
+			@include border-radius(13px);
+		}
 	}
 	.proximity {
-		background: Royalblue;
+		&.top { background: Royalblue; }
+		&.right { background: Royalblue; }
+		&.bottom { background: Royalblue; }
+		&.left { background: Royalblue; }
 	}
 	.princesse {
 	  background: pink;
@@ -68,17 +138,5 @@
 	.rival {
 		background: red;
 	}
-}
-
-.lastitem {
-	margin-right: 0;
-}
-.uppercase {
-	text-transform: uppercase;
-}
-#keyboard .space {
-	width: 143px;
-}
-.on {
-	display: none;
+	// Fin de changeant
 }

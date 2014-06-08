@@ -3,8 +3,8 @@ var KeyGame = (function(keygame) {
   keygame.Router.RoutesManager = Backbone.Router.extend({
 
     initialize: function(args) {
-      this.collection = args.collection;
-      console.log("this.collection", this.collection);
+      //this.collection = args.collection;
+      //console.log("this.collection", this.collection);
     },
 
     routes: {

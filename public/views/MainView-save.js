@@ -29,7 +29,7 @@ var KeyGame = (function(keygame) {
       this.heroView = new keygame.Views.HeroView( {parent:this} );
 
       // Positionnement aléatoire de la princesse
-      this.princessView.setPrincesseKey();
+      //this.princessView.positionnerPrincesse();
 
       //this.render();
     },
@@ -50,12 +50,9 @@ var KeyGame = (function(keygame) {
 
     keydown : function (e) {
       //e.preventDefault();
-      var k = e.which;
-      var char = String.fromCharCode(k);
-      console.log("----- keydown", k, char);
-
-      // Affichage du bouton appuyé (.press)
-      window.keyboard.display_press_onKeyboard(k);
+      var char = String.fromCharCode(e.which);
+      console.log("----- keydown", e.which);
+      //$(this.el).find("#keyboard li").removeClass("press").parent().find(".key-"+e.which).addClass("press");
 
       if (this.context=="welcome") {
       // Si on est sur la page d'accueil
