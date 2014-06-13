@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Key Game Admin</title>
+  <link href="../css/keygame.css" rel="stylesheet">
+  <link href="admin.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Admin</h1>
+
+    <a href="#" id="add">Add a screen</a>
+
+    <script id="screens_template" type="x-tmpl-mustache">
+    {{#screens}}
+    <li class="screen" style="background-color:{{color}};">
+      <div class="box">
+        <p contenteditable="true">{{{text}}}</p>
+      </div>
+      <input type="text" name="pattern" value="{{pattern}}">
+      <input type="text" name="Sound" value="{{sound}}">
+    </li>
+    {{/screens}}
+    </script>
+    <ul id="screens"></ul>
+    
+    <a id="save" class="button" href="#">Save</a>
+
+  </div> <!-- fin de .container -->
+
+</body>
+
+<script src="../libs/vendors/jquery-1.10.2.js"></script>
+<script src="../libs/vendors/mustache.js"></script>
+<script src="admin.js"></script>
+
+</html>

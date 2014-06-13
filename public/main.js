@@ -9,7 +9,7 @@ yepnope({
     keygame:      'KeyGame.js',
 
     //Models
-    piege         :'models/bonus1.js',
+    objets        :'models/objects.js',
     posts:        'models/item.js',
 
     //Controllers

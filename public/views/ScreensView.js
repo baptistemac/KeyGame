@@ -14,10 +14,14 @@ var KeyGame = (function(keygame) {
       var renderedContent = Mustache.to_html(this.template, {
         item: item
       });
-
       this.$el.html(renderedContent);
     },
 
+
+    define_screen: function (options) {
+      console.log("define_screen", options);
+      this.render( this.screens.welcome );
+    },
 
     screens : {
       'liste' : [

@@ -47,13 +47,14 @@
 		&:before {
 			content: '';
 			position: absolute;
-			width: 8px;
+			width: 9px;
 			height: 30px;
 			background: inherit;
 			border: inherit;
 			border-right: transparent;
 			top: -1px;		
-			right: 21px;
+			right: 20px;
+			@include border-radius(2px);
 		}
 	}
 	.left-shift {

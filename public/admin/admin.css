@@ -1,0 +1,25 @@
+.screen {
+  height: auto;
+}
+
+.screen .box {
+  padding: 80px;
+}
+
+
+#add {
+	padding: 30px;
+	display: block;
+}
+
+#save {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+}
+
+.button {
+  padding: 10px 12px 5px;
+  text-transform: uppercase;
+  background: white;
+}

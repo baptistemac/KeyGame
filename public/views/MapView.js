@@ -4,6 +4,7 @@ var KeyGame = (function(keygame) {
 
     el: $("#keyboard"),
     
+
     // Définition des touches des différents claviers.
     keyboard_type: "qwerty_fr",
     // -1 = insensitive key : Utile pour déterminer la proximité
@@ -37,22 +38,49 @@ var KeyGame = (function(keygame) {
     keys_available  : [], 
 
     // Définition des bonus et malus
-    objets: {
-      "bonus" : [
+    objets: [
+
       // Chapeau d'invisibilité
-      { invibility: true, turn: 1 },
+      // = Personne ne te voit sur sa boussole.
+      { name:"hat", quantity:2, invibility: true, turn: 1, field: "marais" },
+
       // Permet de voir les pièges du rival
-      { trap_visible: true, turn: 1 },
+      { name:"seehistrap", quantity:0, trap_visible: true, turn: 1 },
+
+      // Permet de voir la position de ton rival (et son dernier chemin parcouru?)
+      { name:"magic magnifying glass", quantity:0 },
+
       // Piège à poser
-      {},
-      // Lampe à jeter pour éclairer n'importe ou = voir plus sur ta boussole
-      // Effet secondaire: Ton rival connait ta position.
-      {}
-      ],
-      "malus" : [
-      {}
-      ]
-    },
+      // Effet secondaire: Tu peux aussi exploser dessus. Souviens toi de la ou tu mets tes bombes :)
+      { name:"trap", quantity:0 },
+
+      // Bombe à jeter
+      { name:"bomb", quantity:0 },
+
+      // Lampe à jeter pour éclairer n'importe ou 
+      // = te permet de voir plus loin sur ta boussole
+      // = mais dévoile ta position à tous
+      { name:"light flare", quantity:0 },
+
+      // Magnette déboussoleur
+      // Casse la boussole si tu tombe sur cet objet
+
+      // Implants d'oreilles
+      // Sons holophonique, tu peux deviner ou se trouve les autres (impose d'avoir la tête face au clavier)
+
+      // Plume chatouilleuse
+      // = Dévoile ta position à tous
+
+      // Flute ennivrante
+      // = Passe ton tour
+
+      // Mouche collante
+      // = la princesse ne répond pas à ton appel
+
+      // Animal qui se balade :)
+
+    ],
+    
 
     initialize: function() {
         console.log("initialize MapView");
@@ -70,19 +98,29 @@ var KeyGame = (function(keygame) {
         // soit sans les touches en doubles et la touche espace.
         // Ce tableau va nous servir à positionner la princesse, les bonus et les malus.
         var keys_unavailable = _.union(this.keys_double, this.space_key, -1);
-        console.log("keys_unavailable", keys_unavailable);
         var rows = this.keyboards.qwerty_fr;
         var all_keys = rows.row0.concat(rows.row1, rows.row2, rows.row3, rows.row4, rows.row5);
         this.keys_available = _.difference(all_keys, keys_unavailable);
-        console.log("this.keys_available", this.keys_available);
+        //console.log("this.keys_available", this.keys_available);
 
         // Ajout des malus et bonus avec le tableau des touches "jouables"
         // NB: Pour des raisons de simplicité, les touches ne peuvent contenir 2 objets en même temps.
         // NB: La touche espace ne devrait pas contenir d'objets car c'est la touche d'entrée dans le jeu
-        // NB: On affiche les bonus et les malus sur le clavier, à leur instantiation.
-        var bonus1 = new keygame.Models.Bonus1( { mapview:this} );
+        // NB: C'est à leur instantiation que l'on affiche les bonus et les malus sur le clavier.
+        // TO DO : Les objets pourraient se positionner en fonction de leurs environnements respectifs.
+        //         Ce qui permet d'être sur d'étaler les objets sur la carte
 
+        // "objets_to_display" contient tous les objets à afficher (ceux dont la quantité est > 0)
+        var objets_to_display = _.filter( this.objets, function(obj){ return obj.quantity; } );
+        var that = this;
+        _.each(objets_to_display, function(obj) {
+          for ( var i=0; i < obj.quantity; i++ ) {
+            var objet = new keygame.Models.Objects( { mapview:that}, obj );
+          }
+        });
+        console.log("this.keys_available", this.keys_available);
 
+        
         /*
         // Pour chaque touche, on attribu une action aléatoirement.
         var i=0;

@@ -5,7 +5,10 @@ var KeyGame = (function(keygame) {
     env_test: 1,
 
     el: "body",
+
     context: "welcome",
+    // Temps à partie pour chaque tour
+    turn_time: 5000, // ms
 
     initialize: function() {
       console.log("MainView initialize");
@@ -44,11 +47,12 @@ var KeyGame = (function(keygame) {
 
     events : {
       'keydown' : 'keydown',
-      //'keyup'   : 'keyup',
+      'keyup'   : 'keyup',
       'click'   : 'click',
     },
 
     keydown : function (e) {
+      console.log("e", e);
       //e.preventDefault();
       var k = e.which;
       var char = String.fromCharCode(k);
@@ -56,7 +60,36 @@ var KeyGame = (function(keygame) {
 
       // Affichage du bouton appuyé (.press)
       window.keyboard.display_press_onKeyboard(k);
+      
+      /*
+      Affichage de l'écran correspondant
+      En fonction de :
+        - enigme/jeux dont tu es le héros/jeux de mémoire/rapidité en cours ?
+        - objets 
+        - terrain (marais/fôret)
+        - Aide "Besoin d'aide? Revient sur le mont espace."
+        - Indication et conseils (Ex: Tu as 5s pour jouer.)
 
+        Actions possibles
+        - utiliser un objet dans l'inventaire
+        - appeler la princesse
+      */
+      var options = {
+        enigme: false,
+        objets: false,
+        terrain: false
+      }
+      this.screensView.define_screen( options );
+
+      // Lancement du temps de tour
+      if ( intervalID ) clearInterval(intervalID);
+      var intervalID = window.setInterval(timer, this.turn_time);
+
+      function timer () {
+        console.log("timer");
+      }
+
+      /*
       if (this.context=="welcome") {
       // Si on est sur la page d'accueil
         if (e.which==this.space) {
@@ -93,16 +126,16 @@ var KeyGame = (function(keygame) {
           //Rival play
           this.rival_play();
         }
-
+        
       }
-
+      */
     },
 
     keyup : function (e) {
       e.preventDefault();
       var char = String.fromCharCode(e.which);
-      console.log("keyup", e.which, "char", char);
-      //$(this.el).find("#keyboard #"+e.which).removeClass("press");
+      // On retire la class du bouton appuyé (.press)
+      window.keyboard.remove_press_onKeyboard();
     },
 
     click: function (e) {

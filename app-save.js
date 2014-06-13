@@ -4,7 +4,6 @@ Déclaration des librairies
 var express = require('express');
 var logfmt = require("logfmt");
 var nStore = require('nstore');
-var fs = require('fs');
 var app = module.exports = express();
 
 app.use(logfmt.requestLogger());
@@ -39,7 +38,7 @@ items = nStore.new("items.db", function() {
       Si les bases n'existent pas,
       elles sont crées automatiquement
     */
-    Routes();
+    //Routes();
     var port = Number(process.env.PORT || 5000);
     app.listen(port, function() {
       console.log("Listening on " + port);
@@ -126,37 +125,12 @@ haveToBeAdmin = function(req, res, next) {
 
 function Routes() {
   
-  app.post('/screens', function(req, res){
-    console.log("post test", req.body);
-
-    var json = req.body;
-
-    var json = JSON.stringify( json );
-    //var store = JSON.parse( req.body );
-    //console.log("store", store); // ta-daaa, Object!
-
-    fs.writeFile("./public/assets/screens/screens.json", json, function(err) {
-      if (err) throw err;
-      console.log('[Great!] Le fichier screens.json a bien été mis à jour.');
-    });
-    res.json(json);
-
-
+  app.get('/test', function(req, res){
+    console.log("test", res);
   });
 
-  // Ce GET N'est pas utile du tout,
-  // c'était juste pour comprendre le principe.
-  app.get('/screens', function(req, res){
-    console.log("get test");
-
-    var data = {};
-    fs.readFile("./public/assets/screens/screens.json", "utf8", function (err, data) {
-      if (err) throw err;
-      data = JSON.parse(data);
-      console.log("data", data);
-      res.json(data);
-    });
-    
+  app.post('/test', function(req, res){
+    console.log("test", res);
   });
 
   app.get('/addusers', function(req, res) {

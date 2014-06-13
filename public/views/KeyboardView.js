@@ -47,6 +47,9 @@ var KeyGame = (function(keygame) {
     display_press_onKeyboard: function (k) {
       this.$el.find("> li").removeClass("press").end().find("> .key-"+k).addClass("press");
     },
+    remove_press_onKeyboard: function () {
+      this.$el.find("> li").removeClass("press");
+    },
 
     display_bonus: function (k) {
       this.$el.find("> .key-"+k).addClass("bonus1");
