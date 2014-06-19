@@ -15,13 +15,24 @@ var Admin = (function(admin) {
     initialize: function() {
       console.log("MainView initialize");
       this.getJson();
-      this.render();
+      //this.render();
     },
 
     render: function() {
-      console.log("MainView render", this.json);
+      var test = {}
+      test.screens = _.indexBy(this.json.screens, 'id');
+
+      console.log("render", this.json );
+      //console.log( test, JSON.stringify( test ) );
+      //this.json = test;
+      //this.json.screens = _.map(this.json.screens, function(value, index) {
+      //    return [value];
+      //});
+
+
+      console.log("MainView render", this.json.screens);
       Mustache.parse(this.template);   // optional, speeds up future uses
-      var rendered = Mustache.render(this.template, this.json);
+      var rendered = Mustache.render(this.template, this.json );
       $(this.el).find("#screens").html(rendered);
 
       // Et comme le template ne peux pas afficher les field déjà actif
@@ -62,7 +73,7 @@ var Admin = (function(admin) {
           console.log("GET JSON :", data);
           console.table( data.screens );
           that.json = data;
-          that.render( data )
+          that.render( data );
         }
       });
     },
@@ -96,16 +107,30 @@ var Admin = (function(admin) {
       };
       this.json.screens.push(new_screen);
       this.render(this.json);
-      
       window.scrollTo(0,document.body.scrollHeight);
     },
 
 
     // Fonctions utiles
-    // GROS PROBLÈME : confusion entre id et index...
-    get_id: function (curr) {
-      console.log("[[[[  GROS PROBLÈME : confusion entre id et index...  ]]]]");
-      return $(curr).parents("li").attr("meta-id") || console.log("[Error] Impossible de récupèrer l'id correspondant.");
+    get_index: function (curr) {
+      var _index;
+      var _id = $(curr).parents("li").attr("meta-id") || this.throw_error("Impossible de récupèrer l'id correspondant.");
+      _.each( this.json.screens, function(element, index){
+        console.log("id recherché:", _id, "- each", element, index, element.id);
+        if( element.id == _id ) { 
+          console.log("trouvé:",_id);
+          _index = index;
+          return false;
+        }
+      });
+      return _index;
+    },
+
+    get_id_from_json: function (screen) {
+      return screen.id;
+    },
+    get_id_from_html: function (curr) {
+      return $(curr).parents("li").attr("meta-id") || this.throw_error("Impossible de récupèrer l'id correspondant.");
     },
 
     get_new_id: function () {
@@ -113,40 +138,45 @@ var Admin = (function(admin) {
       return parseInt(max.id)+1;
     },
 
+    throw_error: function (text) {
+      console.log("[Error] "+text);
+      return;
+    },
+
 
     // Fontions appelées au changement d'un item
 
     contentEditable_change: function (e) {
-      console.log("contentEditable_change", e.currentTarget);
+      console.log("-- contentEditable_change", e.currentTarget);
       var curr = e.currentTarget; 
-      var id = this.get_id( curr );
+      var index = this.get_index( curr );
       var name = "text";
       var value = $(curr).html();
-      console.log("contentEditable_change", id, value, this.json.screens[id], name);
-      this.json.screens[id][name] = value;
+      console.log("contentEditable_change", index, value, this.json.screens[index], name);
+      this.json.screens[index][name] = value;
     },
 
     input_fields_change: function (e) {
-      console.log("input_fields_change", e.currentTarget);
+      console.log("-- input_fields_change", e.currentTarget);
       var curr = e.currentTarget;
-      var id = this.get_id( curr );
+      var index = this.get_index( curr );
       var name = curr.name;
-      var fields = this.json.screens[id]["fields"] || [];
+      var fields = this.json.screens[index]["fields"] || [];
       ( $(curr).is(":checked")) ?  fields.push( name )  :  fields.splice( fields.indexOf(name) , 1);
       //console.log("fields", fields);
       _.uniq(fields);
-      this.json.screens[id]["fields"] = fields;
+      this.json.screens[index]["fields"] = fields;
     },
 
     input_others_change: function (e) {
-      console.log("input_others_change", e.currentTarget);
+      console.log("-- input_others_change", e.currentTarget);
       var curr = e.currentTarget;
-      var id = this.get_id( curr );
+      var index = this.get_index( curr );
       var name = curr.name;
       var value = curr.value;
-      this.update_screen(id, name, value);
-      console.log(id, name, value, this.json.screens[id][name]);
-      this.json.screens[id][name] = value;
+      this.update_screen(index, name, value);
+      console.log(index, name, value, this.json.screens[index][name]);
+      this.json.screens[index][name] = value;
     },
 
     update_screen: function (id, name, value) {
@@ -160,13 +190,12 @@ var Admin = (function(admin) {
     remove_screen: function (e) {
       e.preventDefault();
       var curr = e.currentTarget;
-      var _id = this.get_id( curr );
-      if ( confirm("Want to remove screen "+_id+" ?") ) {
-        var screen = _.findWhere(this.json.screens, {id: _id});
-        var odds = _.reject(this.json.screens, function(num){ return num.id==_id; });
-        console.log("remove screen", _id, "screen", screen, "odds", odds);
-        this.json.screens = odds;
-        $("#screens > [meta-id="+_id+"]").slideUp();
+      var index = this.get_index( curr );
+      if ( confirm("Want to remove screen "+this.json.screens[index].text+" ?") ) {
+        this.json.screens.splice(index, 1);
+        var id = this.get_id_from_html(curr);
+        $("#screens > [meta-id="+id+"]").slideUp();
+        console.log(this.json.screens);
       }
     }
 

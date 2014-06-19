@@ -8,14 +8,14 @@
   display: block;
   top: 0;
   z-index: 2;
-  background-color: gray;
+  background-color: white;
   width: 100%;
 }
 
 #add {
   padding: 20px;
   display: block;
-  color: white;
+  color: black;
 }
 
 #save {
@@ -28,6 +28,8 @@
 .button {
   padding: 10px 12px 5px;
   text-transform: uppercase;
+  color: black;
+  border: 1px solid gray;
   background: white;
 }
 
@@ -76,8 +78,8 @@ input.color {
 input.color:focus {
   background-color: rgba(255,255,255,.5);
 }
-input.pattern, input.sound {
-  width: 300px;
+input.pattern, input.sound, input.type {
+  width: 23%;
 }
 
 

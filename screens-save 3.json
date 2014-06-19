@@ -45,29 +45,5 @@
       "text": "c'est le id 6",
       "color": "orange"
     }
-  ],
-
-
-  "fields" : [
-
-  ],
-
-
-  "objects": [
-    { 
-      "id": 0,
-      "name": "hat",
-      "quantity": 2, 
-      "effect": ["invisibility"], 
-      "turn": 1, 
-      "possible_fields": ["marais"]
-    },
-    { 
-      "id" : 1,
-      "name": "seehistrap", 
-      "quantity": 0,
-      "effect": ["trap_visible"],
-      "turn": 1
-   }
   ]
 }

@@ -5,8 +5,7 @@ yepnope({
     backbone:     '../libs/vendors/backbone.js',
     mustache:     '../libs/vendors/mustache.js',
 
-    mainview:     'MainView.js',
-    screenview:   'ScreenView.js'
+    mainview:     'MainView.js'
   },
 
   complete: function() {

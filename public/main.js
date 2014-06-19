@@ -10,17 +10,18 @@ yepnope({
 
     //Models
     objets        :'models/objects.js',
-    posts:        'models/item.js',
+    characters    :'models/characters.js',
+
 
     //Controllers
     mainview      :'views/MainView.js',
     screenview    :'views/ScreensView.js',
     mapview       :'views/MapView.js',
-    princessview  :'views/PrincessView.js',
-    rivalview     :'views/RivalView.js',
+    //princessview  :'views/PrincessView.js',
+    //rivalview     :'views/RivalView.js',
     keyboardview  :'views/KeyboardView.js',
     fieldview     :'views/FieldView.js',
-    heroView      :'views/HeroView.js',
+    //heroView      :'views/HeroView.js',
 
     //Routes
     routes:       'routes.js',

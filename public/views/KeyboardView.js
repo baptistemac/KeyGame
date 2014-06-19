@@ -10,7 +10,7 @@ var KeyGame = (function(keygame) {
     },
 
     render: function() {
-      console.log("keyboard render", this);
+      console.log("keyboard render");
     },
 
     events : {
@@ -21,11 +21,11 @@ var KeyGame = (function(keygame) {
       var that = this;
       var mapview = args.mapview;
       var fields = mapview.fieldView.fields;
-      console.log("display_field_onKeyboard", mapview);
+      console.log("display_field_onKeyboard");
 
       // Pour chaque terrain
       _.each(fields, function(field, name) {
-          console.log(field, name);
+          //console.log(field, name);
           // Pour chaque touche de ce terrain
           _.each(field, function(key, index) {
               that.$el.find(".key-"+key).addClass(name);

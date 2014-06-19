@@ -4,84 +4,63 @@ var KeyGame = (function(keygame) {
 
     el: $("#screens"),
     
-    initialize: function() {
-      console.log("ScreenView initialize");
+    screens: {},
+
+
+    initialize: function( args ) {
+      this.mainview = args.mainview;
+      console.log("ScreensView initialize");
       this.template = $("#screens_template").html();
+      this.get_screens();
     },
     
-    render: function(item) {
-      console.log("ScreenView render", item);
+    render: function(screen) {
+      console.log("ScreenView render", screen);
       var renderedContent = Mustache.to_html(this.template, {
-        item: item
+        item: screen
       });
       this.$el.html(renderedContent);
     },
 
-
-    define_screen: function (options) {
-      console.log("define_screen", options);
-      this.render( this.screens.welcome );
+    get_screens: function () {
+      var that = this;
+      $.ajax({
+        type: 'GET',
+        url: '/screens',
+        error: function (err) {
+          console.log("[Error] Impossible de récupérer le fichier JSON.", err);
+        },
+        success: function (data) {
+          that.screens = data.screens;
+          console.table( that.screens );
+          that.mainview.render();
+        }
+      });
     },
 
-    screens : {
-      'liste' : [
+    get_type: function (value) {
+      return _.where(this.screens, {type: value});
+    },
 
-      {type:"", 
-      text:"La princesse n'est pas ici.", 
-      color:"LightGreen", 
-      sound:""},
+    render_type:function(value) {
+      var screen = this.get_type(value);
+      this.render( screen );
+    },
 
-      {type:"", 
-      text:"Tu viens de marcher sur un piège posé par ton rival. </br>Il t'a repéré.",
-      color:"Plum",
-      sound:""},
+    define_screen: function (args) {
+      console.log("define_screen", args);
       
-      {type:"", 
-      text:"Tu viens de trouver la boussole à princesse. </br>Suis-la, elle te guidera vers elle.", 
-      color:"PaleTurquoise", 
-      sound:""},
 
-      {type:"", 
-      text:"Le sol n'est pas trés solide ici.</br>Passe ton tour.", 
-      color:"Salmon", 
-      sound:""},
-      
-      {type:"", 
-      text:"<span class='img' style='background-image: url(assets/img/church.jpg)'></span>Tu attéris devant l'église. </br>Le prêtre te questionne sur le bienfondé de ta quète.",
-      answers: [
-        "<div class='answer'>Sauver la princesse!<span>Va en <span class='key-style'>V</span></div>",
-        "<div class='answer'>Sauter la princesse!<span>Va en <span class='key-style'>T</span></div>"],
-      color:"#ecf5fc", 
-      sound:""},
-      
-      {type:"", 
-      text:"Tu vas te faire manger", 
-      color:"Peru", 
-      sound:""}
+      //this.render( this.screens.welcome );
+    },
 
-      ],
-
-      'welcome' :[
-        {text:"<span class='title'>Touché Trouvé</span><strong>La princesse s'est perdue sur une des touches de ton clavier. Tu dois la retrouver avant Bart, ton rival de toujours.</strong><span>Rendez-vous sur<span class='key-style space block'>espace</span> pour commencer l'aventure.</span>", 
-        color:"CadetBlue", 
-        sound:""}],
-
-      'begin' : [
-        {text:"Commence donc par explorer les environs.", 
-        color:"Silver", 
-        sound:""}],
-
-      'findPrincess' : [
-        {text:"Tu as trouvé la princesse avant ton rival!",
-        pattern: "pattern-diagmonds-light.png",
-        color:"Gold", 
-        sound:""}],
-
-      'notAccepted' : [
-        {text:"Il n'y a rien ici.", 
-        color:"LightCoral", 
-        sound:""}]
-
+    is_in_forceskey: function (k) {
+      console.log("check_key");
+      if ( _.contains([32], k) ) {
+        return true;
+      } else {
+        return false;
+      }
     }
 
   });
