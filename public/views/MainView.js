@@ -2,15 +2,14 @@ var KeyGame = (function(keygame) {
 
   keygame.Views.MainView = Backbone.View.extend({
 
-    env_test: 1,
+
+    env_test: 0,
 
     el: "body",
 
     // Temps à partie pour chaque tour
     turn_time: 10000, // ms
 
-    // S'update à chaque changement d'écran :
-    touches_possibles : {},  // Redondant avec screen.json ?
 
 
     initialize: function() {
@@ -18,34 +17,59 @@ var KeyGame = (function(keygame) {
 
       if (this.env_test) $("#keyboard").show();
 
-      // Instanciation de la vue d'un écran
-      // A la fin du chargement de screens.json, on lance mainview.render().
-      this.screensView = new keygame.Views.ScreensView( {mainview:this} );
 
-      // Initialisation la princesse :)
-      this.princesse = new keygame.Models.Characters( {name:"princesse"} );
-
-      // Initialisation du rival
-      this.rival = new keygame.Models.Characters( {name:"rival"} );
-
-      // Initialialisation de la map
       this.mapView = new KeyGame.Views.MapView();
 
-      // Initialisation du héros
-      this.hero = new keygame.Models.Characters( {name:"hero"} );
+      // Récupèration de data.json.
+      // Lorsque c'est récupéré, on créé la map,
+      // puis on appelle mainview.render().
+      this.get_data();
 
-      // Positionnement aléatoire de la princesse
-      this.princesse.setPrincesseKey( { mainview: this } );
+      // Initialisation des personnages
+      this.hero       = new keygame.Models.Characters( { name: "hero" } );
+      this.princess   = new keygame.Models.Characters( { name: "princess" } );
+      this.rival      = new keygame.Models.Characters( { name: "rival" } );
 
-      //this.render();
+      // Instanciation de la vue d'un écran
+      // screensView se chargera de l'affichage des écrans.
+      // Attention! À ce moment, nous n'avons pas encore les data, puisque la récupèration et asynchrone.
+      //this.screensView = new keygame.Views.ScreensView( {mainview:this} );
     },
+
 
     render: function() {
-      console.log("MainView render");
+      console.log("MainView render", this.mapView);
+
+      // Positionnement aléatoire de la princesse
+      this.mapView.setPrincessKey( this.princess );
       //On affiche le premier écran
-      this.screensView.render_type("welcome");
+
+      this.mapView.render_screenType("welcome");
     },
 
+
+    get_data: function () {
+      var that = this;
+      $.ajax({
+        type: 'GET',
+        url: '/data',
+        error: function (err) {
+          console.log("[Error] Impossible de récupérer le fichier JSON.", err);
+        },
+        success: function (data) {
+          // On a les data (Screens, fields, keyboards, objects)
+          // On créer donc la map correspondante.
+          // A la fin, on appelera mainview.render() pour lancer le premier écran.
+          console.log("data", data);
+          console.table( data.keyboards.qwerty_fr );
+          console.table( data.fields );
+          console.table( data.screens );
+          console.table( data.screens_with_objects );
+          console.table( data.objects );
+          that.mapView.build_map( data );
+        }
+      });
+    },
 
 
     events : {
@@ -57,22 +81,35 @@ var KeyGame = (function(keygame) {
     keydown : function (e) {
       //console.log("e", e);
       //e.preventDefault();
-      var k = e.which;
-      var char = String.fromCharCode(k);
-      console.log("----- keydown", k, char);
+      var key = e.which;
+      var char = String.fromCharCode(key);
+      console.log("----- keydown", key, char);
 
       // Affichage du bouton appuyé (.press)
-      window.keyboard.display_press_onKeyboard(k);
+      window.keyboard.display_press_onKeyboard(key);
       
+      
+      //  Flow : 
+      //  0.  Vérifi si la touche est autorisée
+      //  1.  Vérifi si il y a des objets ou des personnages.
+
+      var forcekey = this.mapView.get_curr_screen_ForceKey();
+      if ( forcekey && !_.contains( forcekey, key ) ) {
+        console.log("[info] Impossible de se déplacer ailleurs que sur les touches :", forcekey );
+        // dev: Pomme+R appelle le rafraichissement 
+        if ( key==82 && e.metaKey) {
+          console.log("rafraichissement");
+        } else {
+          return false;
+        }
+      }
+      
+      this.hero.setKey(key);
+      this.mapView.render_screenKey(key);
+
+
+
       /*
-      ///////////  Flow : 
-      ///////////  0. Demande à ScreenView si la touche est autorisée
-      ///////////  1. Demande à FieldView, le terrain correspondant à la touche courante.
-      ///////////  2. Demande à MapView si il y a des objets,
-      ///////////  3. ou des personnages.
-      ///////////  4. Envoi le tout à ScreensView qui détermine l'écran le plus pertinent.
-
-
       Affichage de l'écran correspondant
       En fonction de :
         - enigme/jeux dont tu es le héros/jeux de mémoire/rapidité en cours ?
@@ -85,7 +122,7 @@ var KeyGame = (function(keygame) {
         - utiliser un objet dans l'inventaire
         - appeler la princesse
       */
-
+      /*
       // Cette touche est-elle autorisée par l'écran en cours ?
       if ( this.screensView.is_in_forceskey(k) ) {
         // Si oui, possède-t-elle un écran associée ?
@@ -115,7 +152,7 @@ var KeyGame = (function(keygame) {
       function timer () {
         console.log("timer");
       }
-
+  */
       /*
       if (this.context=="welcome") {
       // Si on est sur la page d'accueil

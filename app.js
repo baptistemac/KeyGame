@@ -34,28 +34,35 @@ app.listen(port, function() {
 function Routes() {
   
   // Défintion des variables utiles
-  var jsonfile = "./screens.json";
-
+  var jsonfile = "./data/data.json";
+  var backupfile = "./data/backup/data_"+get_today()+".json";
+  
   // POST screens
-  app.post('/screens', function(req, res){
-    console.log("post test", req.body);
+  app.post('/data', function(req, res){
+    console.log("post");
 
     var json = req.body;
-    var json = JSON.stringify( json );
-    //var store = JSON.parse( json );
+    var json = JSON.stringify( json, null, '\t' );
+    
+    // Écriture du data.json
     fs.writeFile( jsonfile, json, function(err) {
       if (err) throw err;
       console.log('[Great!] Le fichier '+jsonfile+' a bien été mis à jour.');
     });
+
+    // Écriture du /backup/data_{date}.json
+    fs.writeFile( backupfile, json, function(err) {
+      if (err) throw err;
+      console.log('[Great!] Le fichier de backup '+backupfile+' a bien été mis à jour.');
+    });
+
     res.json(json);
 
   });
 
-  // GET screens
-  // Ce GET N'est pas utile du tout,
-  // c'était juste pour comprendre le principe.
-  app.get('/screens', function(req, res){
-    console.log("get test");
+  // GET data
+  app.get('/data', function(req, res){
+    console.log("get data");
     var data = {};
     fs.readFile( jsonfile, "utf8", function (err, data) {
       if (err) throw err;
@@ -65,5 +72,18 @@ function Routes() {
     });
     
   });
+
+
+  // Fontions utiles
+
+  function get_today () {
+    var today    = new Date();
+    var dd       = today.getDate();
+    var mm       = today.getMonth()+1; //January is 0!`
+    var yyyy     = today.getFullYear();
+    if( dd<10 ) { dd = '0'+dd }
+    if( mm<10 ) { mm = '0'+mm }
+    return yyyy+"-"+mm+"-"+dd;
+  }
 
 }

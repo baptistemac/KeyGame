@@ -1,0 +1,44 @@
+/* line 3, ../sass/boussole.scss */
+.compass {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+}
+/* line 11, ../sass/boussole.scss */
+.compass .circle {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 81px;
+  left: 79px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  font-size: 1.2em;
+  line-height: 1.6em;
+}
+/* line 23, ../sass/boussole.scss */
+.compass .character {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+/* line 29, ../sass/boussole.scss */
+.compass .character.princess {
+  background-color: pink;
+}

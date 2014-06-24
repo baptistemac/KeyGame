@@ -37,7 +37,7 @@ ul {
 }
 
 /* line 14, ../sass/core.scss */
-html, body, .container, #screens, .screen {
+html, body, .container, .screen {
   height: 100%;
 }
 
@@ -87,6 +87,51 @@ body {
   color: #FFFFFF;
 }
 
+/* line 3, ../sass/boussole.scss */
+.compass {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+}
+/* line 11, ../sass/boussole.scss */
+.compass .circle {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  top: 81px;
+  left: 79px;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  -ms-border-radius: 6px;
+  -o-border-radius: 6px;
+  border-radius: 6px;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  font-size: 1.2em;
+  line-height: 1.6em;
+}
+/* line 23, ../sass/boussole.scss */
+.compass .character {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+}
+/* line 29, ../sass/boussole.scss */
+.compass .character.princess {
+  background-color: pink;
+}
+
 /* line 3, ../sass/keyboard.scss */
 #keyboard {
   position: absolute;
@@ -115,24 +160,28 @@ body {
   -o-border-radius: 2px;
   border-radius: 2px;
   cursor: default;
+  -webkit-transition: background-color 1s ease-in-out, opacity 1s ease-in-out;
+  -moz-transition: background-color 1s ease-in-out, opacity 1s ease-in-out;
+  -o-transition: background-color 1s ease-in-out, opacity 1s ease-in-out;
+  transition: background-color 1s ease-in-out, opacity 1s ease-in-out;
 }
-/* line 30, ../sass/keyboard.scss */
+/* line 31, ../sass/keyboard.scss */
 #keyboard .capslock,
 #keyboard .tab,
 #keyboard .left-shift,
 #keyboard .fn {
   clear: left;
 }
-/* line 34, ../sass/keyboard.scss */
+/* line 35, ../sass/keyboard.scss */
 #keyboard .tab,
 #keyboard .delete {
   width: 46px;
 }
-/* line 37, ../sass/keyboard.scss */
+/* line 38, ../sass/keyboard.scss */
 #keyboard .capslock {
   width: 53px;
 }
-/* line 40, ../sass/keyboard.scss */
+/* line 41, ../sass/keyboard.scss */
 #keyboard .return {
   position: absolute;
   width: 23px;
@@ -141,7 +190,7 @@ body {
   right: 2px;
   padding: 12px 4px 0 0;
 }
-/* line 47, ../sass/keyboard.scss */
+/* line 48, ../sass/keyboard.scss */
 #keyboard .return:before {
   content: '';
   position: absolute;
@@ -158,67 +207,67 @@ body {
   -o-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 60, ../sass/keyboard.scss */
+/* line 61, ../sass/keyboard.scss */
 #keyboard .left-shift {
   width: 37px;
 }
-/* line 63, ../sass/keyboard.scss */
+/* line 64, ../sass/keyboard.scss */
 #keyboard .right-shift {
   width: 71px;
 }
-/* line 66, ../sass/keyboard.scss */
+/* line 67, ../sass/keyboard.scss */
 #keyboard .space {
   width: 143px;
 }
-/* line 69, ../sass/keyboard.scss */
+/* line 70, ../sass/keyboard.scss */
 #keyboard .arrow {
   font-size: 8px;
 }
-/* line 72, ../sass/keyboard.scss */
+/* line 73, ../sass/keyboard.scss */
 #keyboard .letter {
   text-transform: uppercase;
 }
-/* line 75, ../sass/keyboard.scss */
+/* line 76, ../sass/keyboard.scss */
 #keyboard .on {
   display: none;
 }
-/* line 78, ../sass/keyboard.scss */
+/* line 79, ../sass/keyboard.scss */
 #keyboard .insensitive {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
-/* line 82, ../sass/keyboard.scss */
+/* line 83, ../sass/keyboard.scss */
 #keyboard .double {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3;
 }
-/* line 87, ../sass/keyboard.scss */
+/* line 88, ../sass/keyboard.scss */
 #keyboard .marais {
   background-color: #f7ede2;
 }
-/* line 90, ../sass/keyboard.scss */
+/* line 91, ../sass/keyboard.scss */
 #keyboard .foret {
   background-color: #cae9da;
 }
-/* line 93, ../sass/keyboard.scss */
+/* line 94, ../sass/keyboard.scss */
 #keyboard .mer {
   background-color: #ecf5fc;
 }
-/* line 96, ../sass/keyboard.scss */
+/* line 97, ../sass/keyboard.scss */
 #keyboard .montagne {
   background-color: #f7e2f6;
 }
-/* line 102, ../sass/keyboard.scss */
+/* line 103, ../sass/keyboard.scss */
 #keyboard .bonus1 {
   background-image: url("../assets/img/objects/hat.png");
   background-repeat: no-repeat;
   background-size: 100%;
 }
-/* line 116, ../sass/keyboard.scss */
+/* line 117, ../sass/keyboard.scss */
 #keyboard .press {
-  border-color: grey;
+  border-color: rgba(0, 0, 0, 0.3);
 }
-/* line 120, ../sass/keyboard.scss */
+/* line 121, ../sass/keyboard.scss */
 #keyboard .hero:after {
   content: '';
   display: block;
@@ -226,58 +275,63 @@ body {
   height: 26px;
   margin: -19px auto 0 auto;
   border: 1px solid rgba(0, 0, 0, 0.3);
-  -webkit-border-radius: 13px;
-  -moz-border-radius: 13px;
-  -ms-border-radius: 13px;
-  -o-border-radius: 13px;
-  border-radius: 13px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
 }
-/* line 131, ../sass/keyboard.scss */
+/* line 132, ../sass/keyboard.scss */
 #keyboard .proximity.top {
   background: Royalblue;
 }
-/* line 132, ../sass/keyboard.scss */
+/* line 133, ../sass/keyboard.scss */
 #keyboard .proximity.right {
   background: Royalblue;
 }
-/* line 133, ../sass/keyboard.scss */
+/* line 134, ../sass/keyboard.scss */
 #keyboard .proximity.bottom {
   background: Royalblue;
 }
-/* line 134, ../sass/keyboard.scss */
+/* line 135, ../sass/keyboard.scss */
 #keyboard .proximity.left {
   background: Royalblue;
 }
-/* line 136, ../sass/keyboard.scss */
-#keyboard .princesse {
+/* line 137, ../sass/keyboard.scss */
+#keyboard .princess {
   background: pink;
 }
-/* line 139, ../sass/keyboard.scss */
+/* line 140, ../sass/keyboard.scss */
 #keyboard .rival {
   background: red;
 }
 
-/* line 9, ../sass/keygame.scss */
+/* line 10, ../sass/keygame.scss */
 .container {
   color: rgba(0, 0, 0, 0.5);
   text-align: center;
 }
-/* line 13, ../sass/keygame.scss */
+/* line 14, ../sass/keygame.scss */
 .container h1 {
   display: none;
 }
-/* line 16, ../sass/keygame.scss */
+/* line 17, ../sass/keygame.scss */
 .container .screen {
-  -webkit-transition: background-color 2s ease-in-out;
-  -moz-transition: background-color 2s ease-in-out;
-  -o-transition: background-color 2s ease-in-out;
-  transition: background-color 2s ease-in-out;
-}
-/* line 19, ../sass/keygame.scss */
-.container .screen .box {
+  -webkit-transition: background-color 1s ease-in-out;
+  -moz-transition: background-color 1s ease-in-out;
+  -o-transition: background-color 1s ease-in-out;
+  transition: background-color 1s ease-in-out;
   padding-top: 80px;
+}
+/* line 21, ../sass/keygame.scss */
+.container .screen .box {
+  padding-top: 50px;
   max-width: 670px;
   margin: 0 auto;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  -o-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
   /*
   :first-letter {
   	font-size: 2em;
@@ -288,26 +342,34 @@ body {
   }
   */
 }
-/* line 34, ../sass/keygame.scss */
-.container .screen .box .title {
-  font-size: 3em;
-}
-/* line 37, ../sass/keygame.scss */
-.container .screen .box p {
+/* line 38, ../sass/keygame.scss */
+.container .screen .box p.title {
+  font-size: 2.5em;
+  line-height: 1em;
   font-weight: 600;
 }
-/* line 41, ../sass/keygame.scss */
+/* line 43, ../sass/keygame.scss */
+.container .screen .box p.text {
+  font-weight: 600;
+  padding-top: 20px;
+}
+/* line 48, ../sass/keygame.scss */
 .container .screen .box p > span {
   display: block;
   font-weight: 500;
 }
-/* line 48, ../sass/keygame.scss */
+/* line 55, ../sass/keygame.scss */
 .container .screen .box strong {
   font-size: 1.1em;
   font-weight: bold;
   display: block;
 }
-/* line 57, ../sass/keygame.scss */
+/* line 61, ../sass/keygame.scss */
+.container .screen .box_old {
+  filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+  opacity: 0;
+}
+/* line 67, ../sass/keygame.scss */
 .container .screen .key-style {
   -webkit-border-radius: 4px 4px;
   -moz-border-radius: 4px / 4px;
@@ -317,20 +379,20 @@ body {
   padding: 4px 12px;
   display: inline-block;
 }
-/* line 63, ../sass/keygame.scss */
+/* line 73, ../sass/keygame.scss */
 .container .screen .key-style.space {
   width: 250px;
 }
-/* line 66, ../sass/keygame.scss */
+/* line 76, ../sass/keygame.scss */
 .container .screen .key-style.block {
   display: block;
   margin: 8px auto;
 }
-/* line 70, ../sass/keygame.scss */
+/* line 80, ../sass/keygame.scss */
 .container .screen .key-style.press {
   background-color: white;
 }
-/* line 75, ../sass/keygame.scss */
+/* line 85, ../sass/keygame.scss */
 .container .screen .img {
   height: 200px;
   width: 100%;

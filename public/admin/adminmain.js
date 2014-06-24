@@ -3,7 +3,7 @@ yepnope({
     jquery:       'libs/vendors/jquery-1.10.2.js',
     underscore:   'libs/vendors/underscore.js',
     backbone:     'libs/vendors/backbone.js',
-    //mustache:     'libs/vendors/mustache.js',
+    mustache:     'libs/vendors/mustache.js',
 
     //NameSpace
     keygame:      'KeyGame.js',
@@ -14,7 +14,7 @@ yepnope({
 
 
     //Controllers
-    mainview      :'views/MainView.js',
+    mainview      :'admin/views/MainView.js',
     screenview    :'views/ScreensView.js',
     mapview       :'views/MapView.js',
     keyboardview  :'views/KeyboardView.js',
@@ -33,20 +33,15 @@ yepnope({
   complete: function() {
     $(function() {
 
-      console.log("Check out the code at https://github.com/baptistemac/KeyGame");
-      console.log("Lauching application ...");
+      console.log("Lauching admin ...");
 
-      //window.itemscollection = new KeyGame.Collections.Items();
-      
       window.keyboard = new KeyGame.Views.KeyboardView();
-      
-      window.mainView = new KeyGame.Views.MainView();
-      
-      window.router   = new KeyGame.Router.RoutesManager({
-      //collection: itemscollection
-      });
 
-      Backbone.history.start();
+      window.mainView = new KeyGame.Views.MainView();
+
+      window.router = new KeyGame.Router.RoutesManager({
+        //collection: itemscollection
+      });
 
     });
 

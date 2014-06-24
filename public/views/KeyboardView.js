@@ -19,16 +19,18 @@ var KeyGame = (function(keygame) {
     // Affichage du terrain sur le clavier
     display_field_onKeyboard: function ( args ) {
       var that = this;
-      var mapview = args.mapview;
-      var fields = mapview.fieldView.fields;
-      console.log("display_field_onKeyboard");
+      var fields = args.mapview.fields;
+      var double_keys = args.mapview.double_keys;
+      console.log("display_field_onKeyboard", double_keys);
 
       // Pour chaque terrain
-      _.each(fields, function(field, name) {
-          //console.log(field, name);
+      _.each( fields, function(field) {
           // Pour chaque touche de ce terrain
-          _.each(field, function(key, index) {
-              that.$el.find(".key-"+key).addClass(name);
+          _.each(field.keys, function(key) {
+            // On enléve les keys en double. Elles n'auront pas de terrain attribué.
+            if ( !_.contains( double_keys, key ) ) {
+              that.$el.find(".key-"+key).addClass(field.name);
+            }
           }); 
       }); 
     },
@@ -37,8 +39,8 @@ var KeyGame = (function(keygame) {
     // qui rende impossible la detection de proximité.
     display_doubleKeys_onKeyboard: function ( args ) {
       var that = this;
-      var keys_double = args.keys_double;
-      _.each(keys_double, function(key) {
+      var double_keys = args.double_keys;
+      _.each(double_keys, function(key) {
         that.$el.find("> .key-"+key).addClass("double");
       });
     },
@@ -51,6 +53,10 @@ var KeyGame = (function(keygame) {
       this.$el.find("> li").removeClass("press");
     },
 
+    display_characterKey: function ( character ) {
+      this.$el.find(">").removeClass(character.name).end().find("> .key-"+character.key).addClass(character.name);
+    },
+
     display_bonus: function (k) {
       this.$el.find("> .key-"+k).addClass("bonus1");
     },
@@ -58,13 +64,7 @@ var KeyGame = (function(keygame) {
     display_princess: function (k) {
       this.$el.find("> .key-"+k).addClass("princesse");
     }
-
-    /*
-    $("#keyboard li").each( function (index){
-      console.log( index + ": " + $( this ).text() );
-      $(this).text( $(this).attr("class") );
-    });
-    */
+    
 
   });
   return keygame;

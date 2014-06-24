@@ -2,28 +2,35 @@ var KeyGame = (function(keygame) {
 
   keygame.Views.MapView = Backbone.View.extend({
 
-    el: $("#keyboard"),
+    el: $(".screen"),
     
+    // Variables contenant les datas du json
+    keyboards             : [],
+    fields                : [],
+    screens               : [],
+    screens_with_objects  : [],
+    objects               : [],
 
-    // Définition des touches des différents claviers.
+    // Création de la map à partir du json data.json
+    map                   : [],
+
+    /* Ce qu'on voudrait : ?
+    map : [
+            {
+              "key": 191,
+              "screen_id": 3,
+              "field_id": 1 
+            },
+            {
+              "key": 49,
+              "screen_id": 1,
+              "fields_id": 2
+            }
+    ],
+    */
+
     keyboard_type: "qwerty_fr",
-    // -1 = insensitive key : Utile pour déterminer la proximité
-    keyboards: {
-      "qwerty_fr": {
-        "row0": [ 27 ], // Les autres touches à droite de Echap ne sont capturables
-        "row1": [ 191,49,50,51,52,53,54,55,56,57,48,189,187,8 ],
-        "row2": [ 9,81,87,69,82,84,89,85,73,79,80,219,221 ],
-        "row3": [ 20,65,83,68,70,71,72,74,75,76,186,222,220,13 ],
-        "row4": [ 16,192,90,88,67,86,66,78,77,188,190,191,16 ],
-        "row5": [ -1,17,18,91,32,93,18,37,38,39,40 ]
-      },
-      "qwerty_en": {
-        // TO DO
-      },
-      "azerty": {
-        // TO DO
-      }
-    },
+    
 
     // A vérifier : les codes des touches ci-dessous sont-ils les mêmes pour un autre type de clavier ?
     escape_key      : 27,
@@ -33,10 +40,13 @@ var KeyGame = (function(keygame) {
     space_key       : 32,
     cmd_left_key    : 91,
     cmd_right_key   : 93,
-    keys_double     : [16,18,191],
-    
-    keys_available  : [], 
+    double_keys     : [ 16, 18, 191 ],
+    impossibles_keys: [ 27, 16, 17, 18, 32, 191, -1 ],
 
+    curr_screen     : {},
+
+
+    /*
     // Définition des bonus et malus
     objets: [
 
@@ -80,58 +90,219 @@ var KeyGame = (function(keygame) {
       // Animal qui se balade :)
 
     ],
-    
+    */
 
-    initialize: function() {
-        console.log("initialize MapView");
-
-        // Initialialisation du terrain
-        this.fieldView = new KeyGame.Views.FieldView( {parent:this} );
-
-        // Affichage des boutons en double sur le calvier
-        window.keyboard.display_doubleKeys_onKeyboard( {keys_double: this.keys_double} );
-        
-        // Affichage du terrain sur le clavier
-        window.keyboard.display_field_onKeyboard( {mapview:this} );
-
-        // Définition du tableau contenant uniquement les touches "jouables", 
-        // soit sans les touches en doubles et la touche espace.
-        // Ce tableau va nous servir à positionner la princesse, les bonus et les malus.
-        var keys_unavailable = _.union(this.keys_double, this.space_key, -1);
-        var rows = this.keyboards.qwerty_fr;
-        var all_keys = rows.row0.concat(rows.row1, rows.row2, rows.row3, rows.row4, rows.row5);
-        this.keys_available = _.difference(all_keys, keys_unavailable);
-        //console.log("this.keys_available", this.keys_available);
-
-        // Ajout des malus et bonus avec le tableau des touches "jouables"
-        // NB: Pour des raisons de simplicité, les touches ne peuvent contenir 2 objets en même temps.
-        // NB: La touche espace ne devrait pas contenir d'objets car c'est la touche d'entrée dans le jeu
-        // NB: C'est à leur instantiation que l'on affiche les bonus et les malus sur le clavier.
-        // TO DO : Les objets pourraient se positionner en fonction de leurs environnements respectifs.
-        //         Ce qui permet d'être sur d'étaler les objets sur la carte
-
-        // "objets_to_display" contient tous les objets à afficher (ceux dont la quantité est > 0)
-        var objets_to_display = _.filter( this.objets, function(obj){ return obj.quantity; } );
-        var that = this;
-        _.each(objets_to_display, function(obj) {
-          for ( var i=0; i < obj.quantity; i++ ) {
-            var objet = new keygame.Models.Objects( { mapview:that}, obj );
-          }
-        });
-        console.log("this.keys_available", this.keys_available);
-
-        
-        /*
-        // Pour chaque touche, on attribu une action aléatoirement.
-        var i=0;
-        for ( i; i<this.keys.length; i++ ) {
-          var random_screen_index = Math.floor(Math.random() * this.screens.liste.length);
-          this.map[this.keys[i]] = random_screen_index;
-        }
-        console.log("this.map", this.map);
-        */
+    initialize: function () {
+      console.log("initialize MapView");
     },
     
+    build_map: function( data ) {
+        console.log("build_map MapView", data);
+
+        this.template = $("#screens_template").html();
+        this.json = data;
+        this.keyboard               = data.keyboards[this.keyboard_type];
+        this.fields                 = data.fields;
+        this.screens                = data.screens;
+        this.screens_with_objects   = data.screens_with_objects;
+        this.objects                = data.objects;
+
+        // Initialialisation du terrain
+        //this.fieldView = new KeyGame.Views.FieldView( {parent:this} );
+
+
+        // On créer l'objet map qui va contenir pour chaque touche, toutes les informations necessaires.
+        // Pour chaque touche,
+        that = this;
+        var row = this.keyboard;
+        this.keys = row[0].concat(row[1],row[2],row[3],row[4],row[5]);
+        //var key_x = 0; // to do
+        //var key_y = 0;
+
+        _.each( this.keys, function(key){
+          console.log("====== ", key);
+
+          // -1 = insensitive key : Impossible à detecter,
+          // mais utile pour déterminer le calcul de proximité des touches
+          if ( key == -1) { return false; }
+
+          // On créer l'objet de cette touche
+          var k = { "key": key };
+
+          // Attribution du field correspondant
+          if ( !_.contains( this.double_keys, key ) ){
+            k.field_id = that.attribute_field(key);
+          }
+
+          // Attribution de l'écran correspondant
+          k.screen_id = that.attribute_screen(k);
+
+          that.map.push( k );
+
+        });
+
+        // La map est ainsi créée.
+        // Il nous reste cependant à y ajouter les objets,
+        // et donc remplacer certains écrans.
+        
+        // Parmis les touches possibles.
+        // (on ne mets pas d'objects sur les touches impossibles )
+        var screenField = _.filter( this.map, function(o) {
+          return !_.contains(that.impossibles_keys, o.key);
+        });
+        //console.log("screenField", screenField);
+
+        _.each( this.objects, function(o){
+          console.log("object", o, o.fields_id);
+
+          // Si ils ont un terrain défini, on leur attribu une touche avec ce terrain.
+          if ( o.fields_id && o.fields_id.length ) {
+            screenField = _.filter( screenField, function(screen) {
+              return _.contains(o.fields_id, screen.field_id );
+            });
+          }
+          // Puis on en choisi au hasard parmis le tableau
+          var rand = Math.floor(Math.random() * screenField.length);
+          var rand_key = screenField[rand].key;
+          //console.log("rand_key", rand_key );
+          var map_key = _.where( that.map, { key: rand_key } )[0];
+          //console.log("map_key", map_key );
+          map_key.object_id = o.id;
+
+          // On a déjà attribué l'objet à une touche,
+          // on va maintenant attribuer un screen_with_objects à cette même touche.
+          var screenObject = _.filter( that.screens_with_objects, function(screen) {
+            return _.contains( screen.objects_id, o.id);
+          });
+          //console.log("screenObject", screenObject);
+          var rand2 = Math.floor(Math.random() * screenObject.length);
+          map_key.objectscreen_id = screenObject[rand2];
+        });
+
+        console.table(this.map);
+
+
+        // Affichage des boutons en double sur le clavier
+        window.keyboard.display_doubleKeys_onKeyboard( { double_keys: this.double_keys } );
+        
+        // Affichage du terrain sur le clavier
+        window.keyboard.display_field_onKeyboard( { mapview: this } );
+
+
+        // On est enfin prêt à lancer l'écran d'accueil du jeu!
+        mainView.render();
+    },
+    
+    
+    render: function(screen) {
+      console.log("MapView render", screen);
+      this.curr_screen = screen;
+      
+      this.$el.css('background-color', screen.color);
+      this.$el.find("> .box").addClass("box_old");
+      var transitionEnd = "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd";
+      this.$el.find("> .box").bind( transitionEnd, function(){
+        console.log("transitionEnd");
+        $(this).unbind(transitionEnd).removeClass("box_old")
+        .html('<p class="title">'+(screen.title||"")+'</p><p class="text">'+(screen.text||"")+'</p>');
+      });
+      
+    },
+
+
+
+    //==========
+    //========== Fonctions de build de la map
+    //==========
+
+
+    attribute_field: function (key) {
+      for ( var i=0; i < this.fields.length; i++) {
+        if ( _.contains(this.fields[i].keys, key)) { 
+          return this.fields[i].id;
+        }
+      }
+    },
+
+    attribute_screen: function (k) {
+      // Dans un premier temps,
+      // on recherche les écrans qui ont le terrain correspondant à la touche,
+      // et qui n'on pas déjà été attribué.
+      var screensFields = _.filter( this.screens, function(screen) {
+        return ( !screen.attribute_key && _.contains( screen.fields_id, k.field_id ));
+      });
+      // Si le tableau des terrains correspondants n'est pas vide,
+      // on en choisi un aléatoirement.
+      if ( screensFields.length ) {
+        var rand = Math.floor(Math.random() * screensFields.length);
+        screensFields[rand].attribute_key = k.key;
+        return screensFields[rand].id;
+        
+      } else {
+        // Sinon, si aucun ne correspond,
+        // on recherche les écrans non attribués qui n'ont pas de précision sur le terrain.
+        var screensFields = _.filter( this.screens, function(screen) {
+          return ( !screen.attribute_key && ( !screen.fields_id || ( screen.fields_id && screen.fields_id.length==0 ) ) );
+        });
+        //console.log("screensFields", screensFields);
+        // Si le tableau des terrains correspondants n'est pas vide,
+        // on en choisi un aléatoirement.
+        console.log( "screensFields.length", screensFields.length);
+        if ( screensFields.length ) {
+          var rand = Math.floor(Math.random() * screensFields.length);
+          screensFields[rand].attribute_key = k.key;
+          return screensFields[rand].id;
+
+        } else {
+          // Si décidemment, aucun écran ne correspond,
+          // on en prend un au hasard (qui sera surement déjà attribué à une touche).
+          var rand = Math.floor(Math.random() * this.screens.length);
+          //screensFields[rand].attribute_key = k.key;
+          return this.screens[rand].id;
+        }
+      }
+      
+    },
+
+    setPrincessKey: function ( princess ) {
+      var possible_keys = _.difference( this.keys, this.impossibles_keys );
+      var rand = Math.floor(Math.random() * possible_keys.length);
+      princess.setKey( possible_keys[rand] );
+    },
+
+
+    //==========
+    //========== Fonctions d'affichage
+    //==========
+
+
+    get_screen_fromKey: function (value) {
+      var screen_id = _.where(this.map, {key: value})[0].screen_id;
+      //console.log("screen_id", screen_id);
+      return _.where(this.screens, {id: screen_id})[0];
+    },
+
+    get_screen_fromType: function (value) {
+      return _.where(this.screens, {type: value})[0];
+    },
+
+    get_curr_screen_ForceKey: function () {
+      //console.log("get_curr_screen_ForceKey", this.curr_screen);
+      return this.curr_screen.forcekey || null;
+    },
+
+    render_screenKey:function(value) {
+      var screen = this.get_screen_fromKey(value);
+      this.render( screen );
+    },
+
+    render_screenType:function(value) {
+      var screen = this.get_screen_fromType(value);
+      //console.log("render_screenType", screen);
+      this.render( screen );
+    },
+
+
 
     detectRivalProximity: function (_k) {
       var k = _k;
@@ -251,9 +422,6 @@ var KeyGame = (function(keygame) {
         $("#keyboard").find(".key-"+element).addClass("proximity left");
     },
 
-    tracker_push: function (key) {
-      this.tracker.push(key);
-    },
 
     remove_class_from_keypress: function () {
       $(this.el).find("li").removeClass("proximity top right bottom left");

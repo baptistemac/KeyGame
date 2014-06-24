@@ -1,0 +1,35 @@
+@import "compass";
+
+.compass {
+	position: relative;
+	width: 200px;
+	height: 200px;
+	margin: 0 auto;
+	@include border-radius(50%);
+	border: 2px solid rgba(0,0,0,.5);
+	
+	.circle {
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		top: 81px;
+		left: 79px;
+		@include border-radius(6px);
+		border: 1px solid rgba(0,0,0,.5);
+		font-size: 1.2em;
+		line-height: 1.6em;
+	}
+	
+	.character {
+		position: absolute;
+		width: 20px;
+		height: 20px;
+		@include border-radius(50%);
+		
+		&.princess {
+			background-color: pink;
+		}
+	}
+
+
+}

@@ -22,6 +22,7 @@
 		border: 1px solid rgba(255,255,255,.3);
 		@include border-radius(2px);
 		cursor: default;
+		@include transition( background-color 1s ease-in-out, opacity 1s ease-in-out );
 	}
 
 	.capslock, 
@@ -114,7 +115,7 @@
 
 	// Changeant
 	.press {
-		border-color: grey;
+		border-color: rgba(0,0,0,.3);
 	}
 	.hero {
 		&:after {
@@ -124,7 +125,7 @@
 			height: 26px;
 			margin: -19px auto 0 auto;
 			border: 1px solid rgba(0,0,0,.3);
-			@include border-radius(13px);
+			@include border-radius(50%);
 		}
 	}
 	.proximity {
@@ -133,7 +134,7 @@
 		&.bottom { background: Royalblue; }
 		&.left { background: Royalblue; }
 	}
-	.princesse {
+	.princess {
 	  background: pink;
 	}
 	.rival {

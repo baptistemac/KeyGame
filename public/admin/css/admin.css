@@ -1,0 +1,137 @@
+*:focus {
+  outline: 0 none;
+}
+
+
+.header {
+  position: fixed;
+  display: block;
+  top: 0;
+  z-index: 2;
+  background-color: white;
+  width: 100%;
+}
+
+#add {
+  padding: 20px;
+  display: block;
+  color: black;
+}
+
+#save {
+  position: absolute;
+  top: 12px;
+  right: 20px;
+  border-radius: 2px;
+}
+
+.button {
+  padding: 10px 12px 5px;
+  text-transform: uppercase;
+  color: black;
+  border: 1px solid gray;
+  background: white;
+}
+
+.remove {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 1.5em;
+}
+.remove:before {
+  content: 'x';
+  width: 20px;
+  height: 20px;
+  display: block;
+  color: white;
+}
+
+
+#screens {
+  margin-top: 68px;
+  display: run-in;
+}
+.screen {
+  position: relative;
+  height: auto;
+}
+
+.screen .box {
+  padding: 80px;
+}
+
+
+
+input[type="text"] {
+  padding: 10px;
+  margin: 20px;
+  background-color: rgba(255,255,255,.2);
+  border: 0px solid black;
+}
+
+input.color {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+input.color:focus {
+  background-color: rgba(255,255,255,.5);
+}
+input.pattern, input.sound, input.type {
+  width: 23%;
+}
+
+
+.fields {
+  position: absolute;
+  left: 20px;
+  top: 73px;
+  width: 50px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+label {
+  cursor: pointer;
+  font-size: 13px;
+}
+label:before {
+  content: "";
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  padding-top: 15px;
+  border: 1px solid rgba(0,0,0,.1);
+  /*background-color: rgba(255,255,255,.2);*/
+}
+
+input[type=checkbox]:checked + label:before {
+  
+}
+input[type=checkbox]:checked + label.marais:before {
+  background-color: #f7ede2;
+}
+input[type=checkbox]:checked + label.foret:before {
+  background-color: #cae9da;
+}
+input[type=checkbox]:checked + label.mer:before {
+  background-color: #ecf5fc;
+}
+input[type=checkbox]:checked + label.montagne:before {
+  background-color: #f7e2f6;
+}
+
+label.marais:before {
+  content: 'Marais';
+}
+label.foret:before {
+  content: 'Forêt';
+}
+label.mer:before {
+  content: 'Mer';
+}
+label.montagne:before {
+  content: 'Montagne';
+}

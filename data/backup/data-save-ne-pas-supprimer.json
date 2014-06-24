@@ -1,0 +1,146 @@
+{
+
+  "keyboards": {
+    "qwerty_fr": {
+      "0": [ 27 ],
+      "1": [ 191,49,50,51,52,53,54,55,56,57,48,189,187,8 ],
+      "2": [ 9,81,87,69,82,84,89,85,73,79,80,219,221 ],
+      "3": [ 20,65,83,68,70,71,72,74,75,76,186,222,220,13 ],
+      "4": [ 16,192,90,88,67,86,66,78,77,188,190,191,16 ],
+      "5": [ -1,17,18,91,32,93,18,37,38,39,40 ]
+    },
+    "qwerty_en": {},
+    "azerty": {}
+  },
+
+
+  "fields" : [ 
+    {
+        "id": 0,
+        "name": "marais",
+        "keys": [ 27,   
+              191,49,50,51,52,
+              9,81,87,69,82,
+              20,65,83,68,70,71,
+              16,192,90,88,
+              17,18,91 ]
+    },
+    {
+        "id": 1,
+        "name": "foret",
+        "keys": [         53,54,55,56,
+                          84,89,85,73,
+                          72,74,75,
+                          67,86,66,78,
+                          32,93,18 ]
+    },
+    {
+        "id": 2,
+        "name": "mer",
+        "keys": [                   57,48,189,
+                                    79,80,
+                                    76,186,
+                                    77,188 ]
+    },
+    {
+        "id": 3,
+        "name": "montagne",
+        "keys": [                         187,8,
+                                          219,221,
+                                          222,220,13,
+                                          190,191,16,
+                                          37,38,39,40 ]
+    }
+  ],
+  
+
+
+  "screens": [
+    {
+      "id": 0,
+      "type": "welcome",
+      "title": "Welcome budy!",
+      "text": "Va donc sur la touche ESPACE pour commencer.",
+      "color": "LightGreen",
+      "sound": "",
+      "pattern": "",
+      "forcekey": [ 32 ],
+      "forcekey_todo": [ { "key":32, "screen":2 } ]
+    },
+    {
+      "id": 1,
+      "type": "",
+      "title": "Ce marais est lugubre.",
+      "text": "Ça fait froid dans le dos.",
+      "color": "Plum",
+      "fields_id": [0]
+    },
+    {
+      "id": 2,
+      "type": "",
+      "title": "Tu viens de trouver la boussole à princesse.",
+      "text": "Suis-la, elle te guidera vers elle.",
+      "color": "PaleTurquoise",
+      "fields_id": [2],
+      "sound": "",
+      "pattern": ""
+    },
+    {
+      "id": 3,
+      "type": "",
+      "title": "Le sol n'est pas trés solide ici.",
+      "text": "Tu va devoir passer ton tour.",
+      "color": "Salmon",
+      "fields_id": [0,1],
+      "attribute_key" : false,
+      "sound": "",
+      "pattern": ""
+    },
+    {
+      "id": 4,
+      "title": "Ceci est un test.",
+      "color": "lightgreen",
+      "pattern": "",
+      "sound": ""
+    },
+    {
+      "id": 6,
+      "title": "c'est le id 6",
+      "color": "orange"
+    }
+  ],
+
+  "screens_with_objects": [
+    {
+      "id": "7",
+      "type": "",
+      "title": "Ho un chapeau d'invisibilité! Je le prends, ça peut toujours servir.",
+      "color": "LightGreen",
+      "objects_id": [0]
+    },
+    {
+      "id": "8",
+      "type": "!",
+      "title": "C'est quoi ce truc sur le sol? Ho un outil pour améliorer ma boussole.",
+      "color": "LightGreen",
+      "objects_id": [1]
+    }
+  ],
+
+  "objects": [
+    { 
+      "id": 0,
+      "name": "hat",
+      "quantity": 2, 
+      "effect": ["invisibility"], 
+      "turn": 2, 
+      "fields_id": [0]
+    },
+    { 
+      "id" : 1,
+      "name": "seehistrap", 
+      "quantity": 0,
+      "effect": ["trap_visible"]
+   }
+  ]
+}

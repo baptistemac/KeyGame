@@ -3,6 +3,7 @@
 @import "base";
 @import "reset";
 @import "core";
+@import "boussole";
 @import "keyboard";
 
 
@@ -14,12 +15,14 @@
 		display: none;
 	}
 	.screen {
-		@include transition(background-color 2s ease-in-out);
+		@include transition(background-color 1s ease-in-out);
+		padding-top: 80px;
 
 		.box {
-			padding-top: 80px;
+			padding-top: 50px;
 			max-width: 670px;
 			margin: 0 auto;
+			@include transition(opacity 0.5s ease-in-out);
 
 			/*
 			:first-letter {
@@ -31,13 +34,17 @@
 			}
 			*/
 
-			.title {
-				font-size: 3em;
-			}
 			p {
-				//font-size: 1em;
-				font-weight: 600;
-
+				&.title {
+					font-size: 2.5em;
+					line-height: 1em;
+					font-weight: 600;
+				}
+				&.text {
+					//font-size: 1em;
+					font-weight: 600;
+					padding-top: 20px;
+				}
 				> span {
 					display: block;
 					//font-size: .7em;
@@ -50,6 +57,9 @@
 				font-weight: bold;
 				display: block;
 			}
+		}
+		.box_old {
+			@include opacity(0);
 		}
 
 
