@@ -15,10 +15,10 @@ yepnope({
 
     //Controllers
     mainview      :'views/MainView.js',
-    screenview    :'views/ScreensView.js',
+    //screenview    :'views/ScreensView.js',
     mapview       :'views/MapView.js',
     keyboardview  :'views/KeyboardView.js',
-    //fieldview     :'views/FieldView.js',
+    compassview     :'views/CompassView.js',
 
     //Routes
     routes:       'routes.js',

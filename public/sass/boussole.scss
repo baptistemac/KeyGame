@@ -24,8 +24,10 @@
 		position: absolute;
 		width: 20px;
 		height: 20px;
+		margin: 90px 0px 0px 90px;
 		@include border-radius(50%);
-		
+		@include transition(top 0.5s ease-in-out, left 0.5s ease-in-out);
+
 		&.princess {
 			background-color: pink;
 		}

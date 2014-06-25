@@ -10,13 +10,25 @@
 <body>
 
   <div class="container">
-
-    <div class="header">
-      <h1>Admin</h1>
-      <a href="#" id="add">Add a screen</a>
-      <a id="save" class="button" href="#">Save</a>
+    
+    <div id="sidebar">
+      <nav>
+        <ul>
+          <li class="screens"><a href="#/screens">Écrans</a></li>
+          <li class="specials_screens"><a href="#/specials_screens">Écrans spéciaux</a></li>
+          <li class="objects"><a href="#/objects">Objets</a></li>
+          <li class="fields"><a href="#/fields">Terrains</a></li>
+          <li class="keyboards"><a href="#/keyboards">Clavier</a></li>
+        </ul>
+        <a id="save" class="button" href="#">Save</a>
+      </nav>
     </div>
     
+    <div class="header">
+      <h1>Écrans</h1>
+      <a href="#" id="add">Add a screen</a>
+    </div>
+
     <!-- Template #screens_template -->
     <script id="screens_template" type="text/template">
     {{#screens}}

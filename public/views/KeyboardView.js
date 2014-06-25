@@ -63,6 +63,25 @@ var KeyGame = (function(keygame) {
 
     display_princess: function (k) {
       this.$el.find("> .key-"+k).addClass("princesse");
+    },
+
+    position: function () {
+      /*
+      var keyboard_width = 466;
+      var keyboard_height = 160;
+      var hero       = $("#keyboard .hero");
+      var pos        = hero.position();
+      var marginTop  = parseInt( $("#keyboard").css('margin-top') );
+      var marginLeft = parseInt( $("#keyboard").css('margin-left') );
+
+      console.log("pos", pos, marginTop,marginLeft);
+
+      var marginTop  = pos.top - (keyboard_height/2);
+      var marginLeft = - (keyboard_width/2) + pos.left;
+      console.log("margin",marginTop,marginLeft);
+
+      this.$el.css({ "margin-top": marginTop+"px", "margin-left": marginLeft+"px" });
+      */
     }
     
 

@@ -1,30 +1,83 @@
+/* line 4, ../sass/admin.scss */
 *:focus {
   outline: 0 none;
 }
 
+/* line 8, ../sass/admin.scss */
+.container h1 {
+  display: inline-block;
+  font-size: 1.6em;
+  padding: 30px 0 20px 20px;
+  float: left;
+}
 
-.header {
+/* line 15, ../sass/admin.scss */
+#sidebar {
   position: fixed;
+  width: 100%;
+  height: 65px;
+  top: 0;
+  text-align: left;
+  background-color: white;
+  z-index: 10;
+  padding-left: 10px;
+  box-shadow: 2px 0px 15px rgba(0, 0, 0, 0.1);
+}
+/* line 25, ../sass/admin.scss */
+#sidebar li a {
   display: block;
+  float: left;
+  font-size: .9em;
+  line-height: 1.6em;
+  font-weight: 600;
+  padding: 19px 12px;
+  letter-spacing: -1px;
+}
+/* line 34, ../sass/admin.scss */
+#sidebar #save {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  border-radius: 2px;
+}
+
+/* 
+#sidebar {
+  position: fixed;
+  width: 230px;
+  height: 100%;
+  top: 0;
+  text-align: left;
+  background-color: white;
+  z-index: 10;
+  padding: 40px;
+  box-shadow: 2px 0px 15px rgba(0,0,0,.1);
+  li a {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 1em;
+  }
+} */
+/* line 60, ../sass/admin.scss */
+.header {
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin-top: 65px;
+  text-align: left;
   top: 0;
   z-index: 2;
   background-color: white;
   width: 100%;
 }
 
+/* line 72, ../sass/admin.scss */
 #add {
-  padding: 20px;
-  display: block;
-  color: black;
+  padding: 45px 20px 0 0;
+  float: right;
 }
 
-#save {
-  position: absolute;
-  top: 12px;
-  right: 20px;
-  border-radius: 2px;
-}
-
+/* line 77, ../sass/admin.scss */
 .button {
   padding: 10px 12px 5px;
   text-transform: uppercase;
@@ -33,12 +86,15 @@
   background: white;
 }
 
+/* line 85, ../sass/admin.scss */
 .remove {
   position: absolute;
   top: 10px;
   right: 20px;
   font-size: 1.5em;
 }
+
+/* line 91, ../sass/admin.scss */
 .remove:before {
   content: 'x';
   width: 20px;
@@ -47,91 +103,91 @@
   color: white;
 }
 
-
-#screens {
-  margin-top: 68px;
-  display: run-in;
-}
-.screen {
+/* line 104, ../sass/admin.scss */
+#screens .screen {
   position: relative;
   height: auto;
 }
-
-.screen .box {
+/* line 109, ../sass/admin.scss */
+#screens .screen .box {
   padding: 80px;
 }
-
-
-
-input[type="text"] {
+/* line 115, ../sass/admin.scss */
+#screens input[type="text"] {
   padding: 10px;
   margin: 20px;
-  background-color: rgba(255,255,255,.2);
+  background-color: rgba(255, 255, 255, 0.2);
   border: 0px solid black;
 }
-
-input.color {
+/* line 122, ../sass/admin.scss */
+#screens input.color {
   position: absolute;
   top: 0;
   left: 0;
 }
-input.color:focus {
-  background-color: rgba(255,255,255,.5);
+/* line 127, ../sass/admin.scss */
+#screens input.color:focus {
+  background-color: rgba(255, 255, 255, 0.5);
 }
-input.pattern, input.sound, input.type {
+/* line 130, ../sass/admin.scss */
+#screens input.pattern, #screens input.sound, #screens input.type {
   width: 23%;
 }
-
-
-.fields {
+/* line 135, ../sass/admin.scss */
+#screens .fields {
   position: absolute;
   left: 20px;
   top: 73px;
   width: 50px;
 }
-
-input[type="checkbox"] {
+/* line 142, ../sass/admin.scss */
+#screens input[type="checkbox"] {
   display: none;
 }
-label {
+/* line 145, ../sass/admin.scss */
+#screens label {
   cursor: pointer;
   font-size: 13px;
 }
-label:before {
+/* line 149, ../sass/admin.scss */
+#screens label:before {
   content: "";
   display: inline-block;
   width: 80px;
   height: 40px;
   padding-top: 15px;
-  border: 1px solid rgba(0,0,0,.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   /*background-color: rgba(255,255,255,.2);*/
 }
-
-input[type=checkbox]:checked + label:before {
-  
-}
-input[type=checkbox]:checked + label.marais:before {
+/* line 162, ../sass/admin.scss */
+#screens input[type=checkbox]:checked + label.marais:before {
   background-color: #f7ede2;
 }
-input[type=checkbox]:checked + label.foret:before {
+/* line 165, ../sass/admin.scss */
+#screens input[type=checkbox]:checked + label.foret:before {
   background-color: #cae9da;
 }
-input[type=checkbox]:checked + label.mer:before {
+/* line 168, ../sass/admin.scss */
+#screens input[type=checkbox]:checked + label.mer:before {
   background-color: #ecf5fc;
 }
-input[type=checkbox]:checked + label.montagne:before {
+/* line 171, ../sass/admin.scss */
+#screens input[type=checkbox]:checked + label.montagne:before {
   background-color: #f7e2f6;
 }
-
-label.marais:before {
+/* line 175, ../sass/admin.scss */
+#screens label.marais:before {
   content: 'Marais';
 }
-label.foret:before {
+/* line 178, ../sass/admin.scss */
+#screens label.foret:before {
   content: 'Forêt';
 }
-label.mer:before {
+/* line 181, ../sass/admin.scss */
+#screens label.mer:before {
   content: 'Mer';
 }
-label.montagne:before {
+/* line 184, ../sass/admin.scss */
+#screens label.montagne:before {
   content: 'Montagne';
 }

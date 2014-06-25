@@ -3,7 +3,7 @@ var KeyGame = (function(keygame) {
   keygame.Views.MainView = Backbone.View.extend({
 
 
-    env_test: 0,
+    env_test: 1,
 
     el: "body",
 
@@ -25,10 +25,7 @@ var KeyGame = (function(keygame) {
       // puis on appelle mainview.render().
       this.get_data();
 
-      // Initialisation des personnages
-      this.hero       = new keygame.Models.Characters( { name: "hero" } );
-      this.princess   = new keygame.Models.Characters( { name: "princess" } );
-      this.rival      = new keygame.Models.Characters( { name: "rival" } );
+
 
       // Instanciation de la vue d'un écran
       // screensView se chargera de l'affichage des écrans.
@@ -66,6 +63,10 @@ var KeyGame = (function(keygame) {
           console.table( data.screens );
           console.table( data.screens_with_objects );
           console.table( data.objects );
+          // Initialisation des personnages
+          that.hero       = new keygame.Models.Characters( { name: "hero", boussole: true } );
+          that.princess   = new keygame.Models.Characters( { name: "princess" } );
+          that.rival      = new keygame.Models.Characters( { name: "rival" } );
           that.mapView.build_map( data );
         }
       });
@@ -105,8 +106,9 @@ var KeyGame = (function(keygame) {
       }
       
       this.hero.setKey(key);
+      window.keyboard.position();
       this.mapView.render_screenKey(key);
-
+      window.keyboard.display_press_onKeyboard(key);
 
 
       /*

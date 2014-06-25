@@ -15,13 +15,12 @@ yepnope({
 
     //Controllers
     mainview      :'admin/views/MainView.js',
-    screenview    :'views/ScreensView.js',
+    navview       :'admin/views/NavView.js',
     mapview       :'views/MapView.js',
     keyboardview  :'views/KeyboardView.js',
-    //fieldview     :'views/FieldView.js',
 
     //Routes
-    routes:       'routes.js',
+    routes:       'admin/routes.js',
 
     //autre
     functions:    'src/functions.js'
@@ -36,12 +35,16 @@ yepnope({
       console.log("Lauching admin ...");
 
       window.keyboard = new KeyGame.Views.KeyboardView();
-
+      
       window.mainView = new KeyGame.Views.MainView();
-
-      window.router = new KeyGame.Router.RoutesManager({
-        //collection: itemscollection
+      
+      window.nav      = new KeyGame.Views.NavView();
+      
+      window.router   = new KeyGame.Router.RoutesManager({
+      //collection: itemscollection
       });
+
+      Backbone.history.start();
 
     });
 

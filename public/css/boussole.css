@@ -32,13 +32,18 @@
   position: absolute;
   width: 20px;
   height: 20px;
+  margin: 90px 0px 0px 90px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
+  -webkit-transition: top 0.5s ease-in-out, left 0.5s ease-in-out;
+  -moz-transition: top 0.5s ease-in-out, left 0.5s ease-in-out;
+  -o-transition: top 0.5s ease-in-out, left 0.5s ease-in-out;
+  transition: top 0.5s ease-in-out, left 0.5s ease-in-out;
 }
-/* line 29, ../sass/boussole.scss */
+/* line 31, ../sass/boussole.scss */
 .compass .character.princess {
   background-color: pink;
 }

@@ -121,13 +121,18 @@ body {
   position: absolute;
   width: 20px;
   height: 20px;
+  margin: 90px 0px 0px 90px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
   -o-border-radius: 50%;
   border-radius: 50%;
+  -webkit-transition: top 0.5s ease-in-out, left 0.5s ease-in-out;
+  -moz-transition: top 0.5s ease-in-out, left 0.5s ease-in-out;
+  -o-transition: top 0.5s ease-in-out, left 0.5s ease-in-out;
+  transition: top 0.5s ease-in-out, left 0.5s ease-in-out;
 }
-/* line 29, ../sass/boussole.scss */
+/* line 31, ../sass/boussole.scss */
 .compass .character.princess {
   background-color: pink;
 }
@@ -137,11 +142,12 @@ body {
   position: absolute;
   width: 466px;
   height: 160px;
-  bottom: 50px;
+  bottom: 100px;
   left: 50%;
   margin-left: -233px;
+  opacity: 0;
 }
-/* line 11, ../sass/keyboard.scss */
+/* line 12, ../sass/keyboard.scss */
 #keyboard li {
   position: relative;
   float: left;
@@ -165,23 +171,23 @@ body {
   -o-transition: background-color 1s ease-in-out, opacity 1s ease-in-out;
   transition: background-color 1s ease-in-out, opacity 1s ease-in-out;
 }
-/* line 31, ../sass/keyboard.scss */
+/* line 32, ../sass/keyboard.scss */
 #keyboard .capslock,
 #keyboard .tab,
 #keyboard .left-shift,
 #keyboard .fn {
   clear: left;
 }
-/* line 35, ../sass/keyboard.scss */
+/* line 36, ../sass/keyboard.scss */
 #keyboard .tab,
 #keyboard .delete {
   width: 46px;
 }
-/* line 38, ../sass/keyboard.scss */
+/* line 39, ../sass/keyboard.scss */
 #keyboard .capslock {
   width: 53px;
 }
-/* line 41, ../sass/keyboard.scss */
+/* line 42, ../sass/keyboard.scss */
 #keyboard .return {
   position: absolute;
   width: 23px;
@@ -190,7 +196,7 @@ body {
   right: 2px;
   padding: 12px 4px 0 0;
 }
-/* line 48, ../sass/keyboard.scss */
+/* line 49, ../sass/keyboard.scss */
 #keyboard .return:before {
   content: '';
   position: absolute;
@@ -207,67 +213,67 @@ body {
   -o-border-radius: 2px;
   border-radius: 2px;
 }
-/* line 61, ../sass/keyboard.scss */
+/* line 62, ../sass/keyboard.scss */
 #keyboard .left-shift {
   width: 37px;
 }
-/* line 64, ../sass/keyboard.scss */
+/* line 65, ../sass/keyboard.scss */
 #keyboard .right-shift {
   width: 71px;
 }
-/* line 67, ../sass/keyboard.scss */
+/* line 68, ../sass/keyboard.scss */
 #keyboard .space {
   width: 143px;
 }
-/* line 70, ../sass/keyboard.scss */
+/* line 71, ../sass/keyboard.scss */
 #keyboard .arrow {
   font-size: 8px;
 }
-/* line 73, ../sass/keyboard.scss */
+/* line 74, ../sass/keyboard.scss */
 #keyboard .letter {
   text-transform: uppercase;
 }
-/* line 76, ../sass/keyboard.scss */
+/* line 77, ../sass/keyboard.scss */
 #keyboard .on {
   display: none;
 }
-/* line 79, ../sass/keyboard.scss */
+/* line 80, ../sass/keyboard.scss */
 #keyboard .insensitive {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
-/* line 83, ../sass/keyboard.scss */
+/* line 84, ../sass/keyboard.scss */
 #keyboard .double {
   filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=30);
   opacity: 0.3;
 }
-/* line 88, ../sass/keyboard.scss */
+/* line 89, ../sass/keyboard.scss */
 #keyboard .marais {
   background-color: #f7ede2;
 }
-/* line 91, ../sass/keyboard.scss */
+/* line 92, ../sass/keyboard.scss */
 #keyboard .foret {
   background-color: #cae9da;
 }
-/* line 94, ../sass/keyboard.scss */
+/* line 95, ../sass/keyboard.scss */
 #keyboard .mer {
   background-color: #ecf5fc;
 }
-/* line 97, ../sass/keyboard.scss */
+/* line 98, ../sass/keyboard.scss */
 #keyboard .montagne {
   background-color: #f7e2f6;
 }
-/* line 103, ../sass/keyboard.scss */
+/* line 104, ../sass/keyboard.scss */
 #keyboard .bonus1 {
   background-image: url("../assets/img/objects/hat.png");
   background-repeat: no-repeat;
   background-size: 100%;
 }
-/* line 117, ../sass/keyboard.scss */
+/* line 118, ../sass/keyboard.scss */
 #keyboard .press {
   border-color: rgba(0, 0, 0, 0.3);
 }
-/* line 121, ../sass/keyboard.scss */
+/* line 122, ../sass/keyboard.scss */
 #keyboard .hero:after {
   content: '';
   display: block;
@@ -281,27 +287,27 @@ body {
   -o-border-radius: 50%;
   border-radius: 50%;
 }
-/* line 132, ../sass/keyboard.scss */
+/* line 133, ../sass/keyboard.scss */
 #keyboard .proximity.top {
   background: Royalblue;
 }
-/* line 133, ../sass/keyboard.scss */
+/* line 134, ../sass/keyboard.scss */
 #keyboard .proximity.right {
   background: Royalblue;
 }
-/* line 134, ../sass/keyboard.scss */
+/* line 135, ../sass/keyboard.scss */
 #keyboard .proximity.bottom {
   background: Royalblue;
 }
-/* line 135, ../sass/keyboard.scss */
+/* line 136, ../sass/keyboard.scss */
 #keyboard .proximity.left {
   background: Royalblue;
 }
-/* line 137, ../sass/keyboard.scss */
+/* line 138, ../sass/keyboard.scss */
 #keyboard .princess {
   background: pink;
 }
-/* line 140, ../sass/keyboard.scss */
+/* line 141, ../sass/keyboard.scss */
 #keyboard .rival {
   background: red;
 }

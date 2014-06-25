@@ -13,8 +13,7 @@ var KeyGame = (function(keygame) {
 
     // Création de la map à partir du json data.json
     map                   : [],
-
-    /* Ce qu'on voudrait : ?
+    /* Format de map :
     map : [
             {
               "key": 191,
@@ -94,6 +93,7 @@ var KeyGame = (function(keygame) {
 
     initialize: function () {
       console.log("initialize MapView");
+      this.compassView = new KeyGame.Views.CompassView();
     },
     
     build_map: function( data ) {
@@ -153,7 +153,7 @@ var KeyGame = (function(keygame) {
         //console.log("screenField", screenField);
 
         _.each( this.objects, function(o){
-          console.log("object", o, o.fields_id);
+          //console.log("object", o, o.fields_id);
 
           // Si ils ont un terrain défini, on leur attribu une touche avec ce terrain.
           if ( o.fields_id && o.fields_id.length ) {
@@ -198,6 +198,7 @@ var KeyGame = (function(keygame) {
       console.log("MapView render", screen);
       this.curr_screen = screen;
       
+      // Mise à jour de l'écran
       this.$el.css('background-color', screen.color);
       this.$el.find("> .box").addClass("box_old");
       var transitionEnd = "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd";
@@ -207,6 +208,9 @@ var KeyGame = (function(keygame) {
         .html('<p class="title">'+(screen.title||"")+'</p><p class="text">'+(screen.text||"")+'</p>');
       });
       
+      // Mise à jour de la boussole
+      this.compassView.update( this.curr_screen.attribute_key );
+
     },
 
 
@@ -247,7 +251,7 @@ var KeyGame = (function(keygame) {
         //console.log("screensFields", screensFields);
         // Si le tableau des terrains correspondants n'est pas vide,
         // on en choisi un aléatoirement.
-        console.log( "screensFields.length", screensFields.length);
+        //console.log( "screensFields.length", screensFields.length);
         if ( screensFields.length ) {
           var rand = Math.floor(Math.random() * screensFields.length);
           screensFields[rand].attribute_key = k.key;
