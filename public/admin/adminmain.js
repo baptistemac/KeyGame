@@ -1,29 +1,35 @@
 yepnope({
   load: {
-    jquery:       'libs/vendors/jquery-1.10.2.js',
-    underscore:   'libs/vendors/underscore.js',
-    backbone:     'libs/vendors/backbone.js',
-    mustache:     'libs/vendors/mustache.js',
+    jquery:       '../libs/vendors/jquery-1.10.2.js',
+    underscore:   '../libs/vendors/underscore.js',
+    backbone:     '../libs/vendors/backbone.js',
+    mustache:     '../libs/vendors/mustache.js',
 
     //NameSpace
-    keygame:      'KeyGame.js',
+    keygame:      '../KeyGame.js',
 
     //Models
-    objets        :'models/objects.js',
-    characters    :'models/characters.js',
+    //objets        :'models/objects.js',
+    //characters    :'models/characters.js',
 
 
     //Controllers
-    mainview      :'admin/views/MainView.js',
-    navview       :'admin/views/NavView.js',
-    mapview       :'views/MapView.js',
-    keyboardview  :'views/KeyboardView.js',
+    mainview                :'views/MainView.js',
+    navview                 :'views/NavView.js',
+    screenssview            :'views/ScreensView.js',
+    specialsscreenssview    :'views/SpecialsScreensView.js',
+    objectsview             :'views/ObjectsView.js',
+    fieldsview              :'views/FieldsView.js',
+    keyboardsview           :'views/KeyboardsView.js',
+
+    //mapview       :'views/MapView.js',
+    //keyboardview  :'views/KeyboardView.js',
 
     //Routes
-    routes:       'admin/routes.js',
+    routes:       'routes.js',
 
     //autre
-    functions:    'src/functions.js'
+    functions:    '../src/functions.js'
 
   },
 
@@ -33,18 +39,10 @@ yepnope({
     $(function() {
 
       console.log("Lauching admin ...");
-
-      window.keyboard = new KeyGame.Views.KeyboardView();
       
       window.mainView = new KeyGame.Views.MainView();
       
-      window.nav      = new KeyGame.Views.NavView();
-      
-      window.router   = new KeyGame.Router.RoutesManager({
-      //collection: itemscollection
-      });
-
-      Backbone.history.start();
+      window.navView      = new KeyGame.Views.NavView();
 
     });
 

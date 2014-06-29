@@ -3,6 +3,7 @@ var context;
 var bufferLoader;
 
 function init() {
+  console.log("sound init");
   // Fix up prefixing
   window.AudioContext = window.AudioContext || window.webkitAudioContext;
   context = new AudioContext();
@@ -10,11 +11,11 @@ function init() {
   bufferLoader = new BufferLoader(
     context,
     [
-      'sounds/bubbles.mp3',
-      'sounds/clay.mp3',
-      'sounds/confetti.mp3',
-      'sounds/corona.mp3',
-      'sounds/dotted-spiral.mp3'
+      'assets/sounds/bubbles.mp3',
+      'assets/sounds/clay.mp3',
+      'assets/sounds/confetti.mp3',
+      'assets/sounds/corona.mp3',
+      'assets/sounds/dotted-spiral.mp3'
     ],
     finishedLoading
     );
@@ -23,6 +24,7 @@ function init() {
 }
 
 function finishedLoading(bufferList) {
+  console.log("sound finishedLoading");
   // Create two sources and play them both together.
   var source1 = context.createBufferSource();
   var source2 = context.createBufferSource();

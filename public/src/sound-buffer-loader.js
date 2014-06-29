@@ -1,4 +1,10 @@
+//
+// Buffer loader
+//
+
+
 function BufferLoader(context, urlList, callback) {
+  console.log("BufferLoader");
   this.context = context;
   this.urlList = urlList;
   this.onload = callback;
@@ -45,3 +51,40 @@ BufferLoader.prototype.load = function() {
   this.loadBuffer(this.urlList[i], i);
 }
 
+
+
+
+
+//
+// Play sound
+//
+
+
+var context;
+var bufferLoader;
+window.AudioContext = window.AudioContext || window.webkitAudioContext;
+context = new AudioContext();
+
+
+function play( sound ) {
+
+  console.log("sound play", sound);
+  bufferLoader = new BufferLoader(
+    context,
+    [ 'assets/sounds/'+sound ],
+    finishedLoading
+  );
+  bufferLoader.load();
+
+}
+
+
+function finishedLoading(bufferList) {
+
+  console.log("sound finishedLoading");
+  var source1 = context.createBufferSource();
+  source1.buffer = bufferList[0];
+  source1.connect(context.destination);
+  source1.start(0);
+
+}

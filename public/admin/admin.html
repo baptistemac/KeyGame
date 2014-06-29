@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Key Game Admin</title>
+  <link href="../css/keygame.css" rel="stylesheet">
+  <link href="./css/admin.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <div class="container">
+    
+    <nav id="nav">
+        <ul>
+          <li class="screens"><a href="screens">Écrans</a></li>
+          <li class="specials_screens"><a href="specials_screens">Écrans spéciaux</a></li>
+          <li class="objects"><a href="objects">Objets</a></li>
+          <li class="fields"><a href="fields">Terrains</a></li>
+          <li class="keyboards"><a href="keyboards">Clavier</a></li>
+        </ul>
+        <a id="save" class="button" href="#">Save</a>
+    </nav>
+
+    <!-- Template #screens_template -->
+    <script id="screens_template" type="text/template">
+
+    <li class="add add_screen">
+      <a href="#" class="">+</a>
+    </li>
+
+    {{#screens}}
+    <li class="screen" meta-id="{{id}}" style="background-color:{{color}};">
+      <div class="box">
+        <p contenteditable="true" class="title">{{{title}}}</p>
+        <p contenteditable="true" class="text">{{{text}}}</p>
+      </div>
+      {{id}}
+      <div class="fields">
+        <input class="field" type="checkbox" id="marais-{{id}}" name="marais">
+        <label class="marais" for="marais-{{id}}"></label>
+        
+        <input class="field" type="checkbox" id="foret-{{id}}" name="foret">
+        <label class="foret" for="foret-{{id}}"></label>
+        
+        <input class="field" type="checkbox" id="mer-{{id}}" name="mer">
+        <label class="mer" for="mer-{{id}}"></label>
+        
+        <input class="field" type="checkbox" id="montagne-{{id}}" name="montagne">
+        <label class="montagne" for="montagne-{{id}}"></label>
+      </div>
+      <div class="others">
+        <input type="text" class="color" name="color" placeholder="Color" type="color" value="{{color}}">
+        <input type="text" class="pattern" name="pattern" placeholder="Pattern" value="{{pattern}}">
+        <input type="text" class="sound" name="sound" placeholder="Sound" value="{{sound}}">
+        <input type="text" class="type" name="type" placeholder="Type" value="{{type}}">
+        <input type="text" class="forcekeys" name="forcekeys" placeholder="Forcekeys" value="{{forcekey}}">
+      </div>
+      <a href="#" class="remove"> </a>
+    </li>
+    {{/screens}}
+    </script>
+    <!-- Fin du template #screens_template -->
+
+    <ul id="screens"></ul>
+    
+
+
+    <!-- Template #specialsscreens_template -->
+    <script id="specialsscreens_template" type="text/template">
+
+    <li class="add add_specialscreen">
+      <a href="#" class="">+</a>
+    </li>
+
+    {{#screens_specials}}
+    <li class="screen special_screen" meta-id="{{id}}" style="background-color:{{color}};">
+      <div class="box">
+        <p contenteditable="true" class="title">{{{title}}}</p>
+        <p contenteditable="true" class="text">{{{text}}}</p>
+      </div>
+      {{id}}
+      <div class="fields">
+        <input class="field" type="checkbox" id="marais-{{id}}" name="marais">
+        <label class="marais" for="marais-{{id}}"></label>
+        
+        <input class="field" type="checkbox" id="foret-{{id}}" name="foret">
+        <label class="foret" for="foret-{{id}}"></label>
+        
+        <input class="field" type="checkbox" id="mer-{{id}}" name="mer">
+        <label class="mer" for="mer-{{id}}"></label>
+        
+        <input class="field" type="checkbox" id="montagne-{{id}}" name="montagne">
+        <label class="montagne" for="montagne-{{id}}"></label>
+      </div>
+      <div class="others">
+        <input type="text" class="color" name="color" placeholder="Color" type="color" value="{{color}}">
+        <input type="text" class="pattern" name="pattern" placeholder="Pattern" value="{{pattern}}">
+        <input type="text" class="sound" name="sound" placeholder="Sound" value="{{sound}}">
+        <input type="text" class="type" name="type" placeholder="Type" value="{{type}}">
+        <input type="text" class="forcekeys" name="forcekeys" placeholder="Forcekeys" value="{{forcekey}}">
+      </div>
+      <a href="#" class="remove"> </a>
+    </li>
+    </li>
+    {{/screens_specials}}
+    </script>
+    <!-- Fin du template #specialsscreens_template -->
+
+    <ul id="specials_screens"></ul>
+
+
+
+
+    <!-- Template #objects_template -->
+    <script id="objects_template" type="text/template">
+
+    <li class="add add_object">
+      <a href="#" class="">+</a>
+    </li>
+
+    {{#objects}}
+    <li class="object" meta-id="{{id}}">
+      <p contenteditable="true" class="title">{{{name}}}</p>
+      <input type="text" class="quantity" name="quantity" placeholder="Quantity on keyboard" type="quantity" value="{{quantity}}">
+      <input type="text" class="turn" name="turn" placeholder="Turn effective number" type="turn" value="{{turn}}">
+      {{#effect}}
+      <input type="text" class="effect" name="effect" placeholder="Effect" type="effect" value="{{effect}}">
+      {{/effect}}
+    </li>
+    {{/objects}}
+    </script>
+    <!-- Fin du template #objects_template -->
+
+    <ul id="objects"></ul>
+
+
+
+    <!-- Template #fields_template -->
+    <script id="fields_template" type="text/template">
+
+    <li class="add add_field">
+      <a href="#" class="">+</a>
+    </li>
+
+    {{#fields}}
+    <li class="field" meta-id="{{id}}">
+    </li>
+    {{/fields}}
+    </script>
+    <!-- Fin du template #fields_template -->
+
+    <ul id="fields"></ul>
+
+
+
+
+    <!-- Template #keyboards_template -->
+    <script id="keyboards_template" type="text/template">
+
+    <li class="add add_keyboard">
+      <a href="#" class="">+</a>
+    </li>
+
+    {{#keyboards}}
+    <li class="keyboard" meta-id="{{id}}">
+    </li>
+    {{/keyboards}}
+    </script>
+    <!-- Fin du template #keyboards_template -->
+
+    <ul id="keyboards"></ul>
+
+  </div> <!-- fin de .container -->
+
+</body>
+
+<script src="../libs/vendors/yepnope.js"></script>
+<script src="./adminmain.js"></script>
+
+
+</html>

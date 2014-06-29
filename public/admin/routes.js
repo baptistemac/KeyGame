@@ -3,43 +3,48 @@ var KeyGame = (function(keygame) {
   keygame.Router.RoutesManager = Backbone.Router.extend({
 
     initialize: function(args) {
-      //this.collection = args.collection;
-      //console.log("this.collection", this.collection);
+      Backbone.history.start( { pushState: true } );
     },
 
     routes: {
-      "admin"         : "admin",
-      "objects"       : "objects",
-      "*path"         : "root",
-      "specials_screens": "specials_screens"
+      "admin/screens"         : "screens",
+      "admin/specials_screens": "specials_screens",
+      "admin/objects"         : "objects",
+      "admin/fields"          : "fields",
+      "admin/keyboards"       : "keyboards",
+      "*path"                 : "root"
     },
 
     root: function() {
-      var that = this;
       console.log("Routes root");
-      /*
-      this.collection.all().fetch({
-        success: function(result) {
-         mainView.render(result);
-        }
-      });
-      */
+      // Par défaut, on affiche screens
+      this.navigate('admin/screens', true);
     },
 
-    admin: function() {
-      console.log("admin");
-      $("h1").html("Hello World !!!");
+    screens : function () {
+      console.log("Route screens");
+      mainView.showView( mainView.screensView );
+    },
+
+    specials_screens : function () {
+      console.log("Route specials_screens");
+      mainView.showView( mainView.specialsscreensView );
     },
 
     objects : function () {
-      console.log("Roote objets");
+      console.log("Route objets");
+      mainView.showView( mainView.objectsView );
+    },
+    
+    fields : function () {
+      console.log("Route fields");
+      mainView.showView( mainView.fieldsView );
     },
 
-    specials_screens: function (e) {
-      this.navigate("admin");
-      $("h1").html("Écrans spéciaux");
+    keyboards : function () {
+      console.log("Route keyboards");
+      mainView.showView( mainView.keyboardsView );
     }
-
 
 
   });

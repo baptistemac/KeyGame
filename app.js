@@ -73,6 +73,9 @@ function Routes() {
     
   });
 
+  app.get('/admin*', function(req, res){
+    res.sendfile( __dirname + '/public/admin/admin.html' );
+  });
 
   // Fontions utiles
 
@@ -85,5 +88,6 @@ function Routes() {
     if( mm<10 ) { mm = '0'+mm }
     return yyyy+"-"+mm+"-"+dd;
   }
+
 
 }

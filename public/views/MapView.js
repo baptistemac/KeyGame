@@ -198,6 +198,12 @@ var KeyGame = (function(keygame) {
       console.log("MapView render", screen);
       this.curr_screen = screen;
       
+      // Lancement du son si il y en a
+      if ( screen.sound && screen.sound.length ) {
+        console.log("lancement du son", screen.sound);
+        window.play( screen.sound );
+      }
+
       // Mise à jour de l'écran
       this.$el.css('background-color', screen.color);
       this.$el.find("> .box").addClass("box_old");

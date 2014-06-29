@@ -196,14 +196,12 @@
 		{
 			"id": 1,
 			"type": "",
-			"title": "<font face=\"Josefin Sans, sans-serif\">sound</font>",
-			"text": "yes",
+			"title": "Ce marais est lugubre. hein",
+			"text": "Ça fait froid dans le dos. oui",
 			"color": "Plum",
 			"fields_id": [
-				0,
-				1
-			],
-			"sound": "bubbles.mp3"
+				0
+			]
 		},
 		{
 			"id": 2,
@@ -214,7 +212,7 @@
 			"fields_id": [
 				2
 			],
-			"sound": "clay.mp3",
+			"sound": "",
 			"pattern": ""
 		},
 		{
@@ -227,7 +225,7 @@
 				1
 			],
 			"attribute_key": false,
-			"sound": "confetti.mp3",
+			"sound": "",
 			"pattern": ""
 		},
 		{
@@ -235,7 +233,7 @@
 			"title": "Ceci est un test.",
 			"color": "lightgreen",
 			"pattern": "",
-			"sound": "corona.mp3",
+			"sound": "",
 			"fields_id": [
 				0
 			]
@@ -246,8 +244,7 @@
 			"color": "orange",
 			"fields_id": [
 				3
-			],
-			"sound": "dotted-spiral.mp3"
+			]
 		},
 		{
 			"id": 7,
@@ -256,24 +253,12 @@
 			"text": "",
 			"fields_id": [
 				1
-			],
-			"sound": "corona.mp3"
+			]
 		},
 		{
 			"id": 8,
 			"title": "No précision",
-			"color": "grey",
-			"sound": "corona.mp3"
-		},
-		{
-			"id": 9,
-			"title": "Test d'ajout",
-			"color": "green",
-			"text": "Ouai ouai",
-			"fields_id": [
-				0,
-				2
-			]
+			"color": "grey"
 		}
 	],
 	"screens_specials": [
@@ -294,21 +279,6 @@
 					"screen": 2
 				}
 			]
-		},
-		{
-			"id": 1,
-			"title": "Yeah! Tu as trouvé la princesse!<br>",
-			"color": "HotPink",
-			"text": "Chapeau bas",
-			"pattern": "pattern",
-			"sound": "sound",
-			"type": "findprincess",
-			"forcekeys": "37"
-		},
-		{
-			"id": 2,
-			"title": "New special screen",
-			"color": "lightgrey"
 		}
 	],
 	"screens_with_objects": [

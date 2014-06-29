@@ -23,6 +23,10 @@ yepnope({
     //Routes
     routes:       'routes.js',
 
+    // Sound
+    soundbuffer:  'src/sound-buffer-loader.js',
+    //sound:  'src/sound.js',
+
     //autre
     functions:    'src/functions.js'
 
@@ -42,11 +46,14 @@ yepnope({
       
       window.mainView = new KeyGame.Views.MainView();
       
+      //window.sound = new KeyGame.Views.SoundView();
+
       window.router   = new KeyGame.Router.RoutesManager({
       //collection: itemscollection
       });
 
       Backbone.history.start();
+
 
     });
 
