@@ -5,33 +5,63 @@
 	width: 200px;
 	height: 200px;
 	margin: 0 auto;
-	@include border-radius(50%);
-	border: 2px solid rgba(0,0,0,.5);
-	
-	.circle {
-		position: absolute;
-		width: 40px;
-		height: 40px;
-		top: 81px;
-		left: 79px;
-		@include border-radius(6px);
-		border: 1px solid rgba(0,0,0,.5);
-		font-size: 1.2em;
-		line-height: 1.6em;
-	}
-	
-	.character {
-		position: absolute;
-		width: 20px;
-		height: 20px;
-		margin: 90px 0px 0px 90px;
-		@include border-radius(50%);
-		@include transition(top 0.5s ease-in-out, left 0.5s ease-in-out);
 
-		&.princess {
-			background-color: pink;
+	
+	.compass2 {
+		// On établi un décalage pour avoir top: 0 et left: 0 au centre du cercle.
+		position: absolute;
+		top: 100px;
+		left: 100px;
+
+		.circle {
+			position: absolute;
+			width: 40px;
+			height: 40px;
+			top: 0px;
+			left: 0px;
+			margin: -20px 0 0 -20px;
+			@include border-radius(6px);
+			border: 1px solid rgba(0,0,0,.5);
+			font-size: 1.2em;
+			line-height: 1.6em;
 		}
-	}
+		
+		.circle2 {
+			position: absolute;
+			top: -100px;
+			left: -100px;
+			width: 200px;
+			height: 200px;
+			@include border-radius(50%);
+			border: 2px solid rgba(0,0,0,.5);
+		}
 
+		.character {
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			margin: -10px 0px 0px -10px;
+			@include border-radius(50%);
+			@include transition(top 0.5s ease-in-out, left 0.5s ease-in-out);
+
+			&.princess {
+				background-color: pink;
+			}
+		}
+
+		.object {
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			margin: -10px 0px 0px -10px;
+			@include border-radius(50%);
+			@include transition(top 0.5s ease-in-out, left 0.5s ease-in-out);
+			background-color: grey;
+			&.hat {
+				background-color: red;
+			}
+		}
+		
+	}
 
 }

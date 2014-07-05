@@ -11,41 +11,24 @@ var KeyGame = (function(keygame) {
     turn_time: 10000, // ms
 
 
-
     initialize: function() {
+
       console.log("MainView initialize");
 
       if (this.env_test) $("#keyboard").show();
 
-
-      this.mapView = new KeyGame.Views.MapView();
+      //this.mapView = new KeyGame.Views.MapView();
 
       // Récupèration de data.json.
       // Lorsque c'est récupéré, on créé la map,
       // puis on appelle mainview.render().
-      this.get_data();
+      this.getData();
 
-
-
-      // Instanciation de la vue d'un écran
-      // screensView se chargera de l'affichage des écrans.
-      // Attention! À ce moment, nous n'avons pas encore les data, puisque la récupèration et asynchrone.
-      //this.screensView = new keygame.Views.ScreensView( {mainview:this} );
     },
 
 
-    render: function() {
-      console.log("MainView render", this.mapView);
+    getData: function () {
 
-      // Positionnement aléatoire de la princesse
-      this.mapView.setPrincessKey( this.princess );
-      //On affiche le premier écran
-
-      this.mapView.render_screenType("welcome");
-    },
-
-
-    get_data: function () {
       var that = this;
       $.ajax({
         type: 'GET',
@@ -56,21 +39,45 @@ var KeyGame = (function(keygame) {
         success: function (data) {
           // On a les data (Screens, fields, keyboards, objects)
           // On créer donc la map correspondante.
-          // A la fin, on appelera mainview.render() pour lancer le premier écran.
           console.log("data", data);
           console.table( data.keyboards.qwerty_fr );
           console.table( data.fields );
           console.table( data.screens );
           console.table( data.screens_with_objects );
           console.table( data.objects );
-          // Initialisation des personnages
-          that.hero       = new keygame.Models.Characters( { name: "hero", boussole: true } );
-          that.princess   = new keygame.Models.Characters( { name: "princess" } );
-          that.rival      = new keygame.Models.Characters( { name: "rival" } );
-          that.mapView.build_map( data );
+
+          that.mapView = new KeyGame.Views.MapView( data );
+          that.mapView.build_map();
+          // On est enfin prêt à lancer l'écran d'accueil du jeu!
+          that.render();
+
         }
       });
+
     },
+
+    reset: function( name ) {
+
+      // reconstruction de la map
+      this.mapView.build_map();
+      window.keyboard.reset_keyboard();
+      // Appel de l'écran Recommencer
+      var screen = _.where( that.screens_specials, { "name": name } )[0];
+      this.mapView.render( screen );
+
+    },
+
+
+    render: function() {
+
+      console.log("MainView render", this.mapView);
+
+      //On affiche le premier écran
+      this.mapView.render_specialScreen("welcome");
+
+    },
+
+
 
 
     events : {
@@ -79,36 +86,69 @@ var KeyGame = (function(keygame) {
       'click'   : 'click',
     },
 
+
     keydown : function (e) {
-      //console.log("e", e);
+
       //e.preventDefault();
       var key = e.which;
-      var char = String.fromCharCode(key);
-      console.log("----- keydown", key, char);
+      var char = String.fromCharCode(e.keyCode);
+      console.log("----- keydown", key, char, e);
 
+      this.mapView.proceed( e, key );
+
+      /*
       // Affichage du bouton appuyé (.press)
       window.keyboard.display_press_onKeyboard(key);
       
       
-      //  Flow : 
-      //  0.  Vérifi si la touche est autorisée
-      //  1.  Vérifi si il y a des objets ou des personnages.
+      //  Vérifi si la touche est autorisée par l'écran en cours
 
-      var forcekey = this.mapView.get_curr_screen_ForceKey();
-      if ( forcekey && !_.contains( forcekey, key ) ) {
-        console.log("[info] Impossible de se déplacer ailleurs que sur les touches :", forcekey );
-        // dev: Pomme+R appelle le rafraichissement 
+      var forcekeys = this.mapView.get_curr_screen_ForceKeys();
+      if ( forcekeys && !_.contains( forcekeys, key ) ) {
+        console.log("[info] Impossible de se déplacer ailleurs que sur les touches :", forcekeys );
+        // dev: Pomme+R provoque quand même le rafraichissement de la page
         if ( key==82 && e.metaKey) {
           console.log("rafraichissement");
         } else {
           return false;
         }
       }
-      
+
+      // Positionne le hero
+
       this.hero.setKey(key);
+
       window.keyboard.position();
+      
+
+      //  Vérifi si il y a la princesse
+
+      if ( key == this.princess.getKey() ) {
+        console.log("princessfind");
+        this.mapView.render_specialScreen("princessfind");
+        return false;
+      }
+
+
+
+      // Vérifi si il y a le rival
+      /*
+      // Grâce à l'objet map, 
+      var mapitem = _.where( this.mapView.map, { "key": key } );
+      console.log("mapitem", mapitem);
+
+      // on vérifi si il y a des objets sur l'écran appelé
+      if ( mapitem.object_id.length ) {
+
+      } 
+
       this.mapView.render_screenKey(key);
+      
+
       window.keyboard.display_press_onKeyboard(key);
+*/
+
+
 
 
       /*
@@ -207,13 +247,15 @@ var KeyGame = (function(keygame) {
     click: function (e) {
       e.preventDefault();
       console.log("[A afficher à l'écran] Inutile de cliquer, tout se passe sur ton clavier.");
-    },
+    }
 
+    /*
     rival_play: function () {
       console.log("rival_play");
       var rival_key = this.mapView.keys[Math.floor(Math.random() * this.mapView.keys.length)];
       $(this.el).find("#keyboard li").removeClass("rival").parent().find("li#"+rival_key).addClass("rival");
     }
+    */
 
   });
   return keygame;

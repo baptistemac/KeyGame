@@ -124,52 +124,56 @@ a {
   margin-top: 66px;
 }
 /* line 118, ../sass/admin.scss */
+.container .screen:last-child {
+  margin-bottom: 60px;
+}
+/* line 121, ../sass/admin.scss */
 .container .screen, .container .object {
   position: relative;
   height: auto;
 }
-/* line 123, ../sass/admin.scss */
+/* line 126, ../sass/admin.scss */
 .container .screen .box {
   padding: 80px;
 }
-/* line 129, ../sass/admin.scss */
+/* line 132, ../sass/admin.scss */
 .container input[type="text"] {
   padding: 10px;
   margin: 20px;
   background-color: rgba(255, 255, 255, 0.2);
   border: 0px solid black;
 }
-/* line 136, ../sass/admin.scss */
+/* line 139, ../sass/admin.scss */
 .container input.color {
   position: absolute;
   top: 0;
   left: 0;
 }
-/* line 141, ../sass/admin.scss */
+/* line 144, ../sass/admin.scss */
 .container input.color:focus {
   background-color: rgba(255, 255, 255, 0.5);
 }
-/* line 144, ../sass/admin.scss */
+/* line 147, ../sass/admin.scss */
 .container input.pattern, .container input.sound, .container input.type {
   width: 23%;
 }
-/* line 149, ../sass/admin.scss */
+/* line 152, ../sass/admin.scss */
 .container .screen .fields {
   position: absolute;
   left: 20px;
   top: 73px;
   width: 50px;
 }
-/* line 156, ../sass/admin.scss */
+/* line 159, ../sass/admin.scss */
 .container input[type="checkbox"] {
   display: none;
 }
-/* line 159, ../sass/admin.scss */
+/* line 162, ../sass/admin.scss */
 .container label {
   cursor: pointer;
   font-size: 13px;
 }
-/* line 163, ../sass/admin.scss */
+/* line 166, ../sass/admin.scss */
 .container label:before {
   content: "";
   display: inline-block;
@@ -179,35 +183,35 @@ a {
   border: 1px solid rgba(0, 0, 0, 0.1);
   /*background-color: rgba(255,255,255,.2);*/
 }
-/* line 176, ../sass/admin.scss */
+/* line 179, ../sass/admin.scss */
 .container input[type=checkbox]:checked + label.marais:before {
   background-color: #f7ede2;
 }
-/* line 179, ../sass/admin.scss */
+/* line 182, ../sass/admin.scss */
 .container input[type=checkbox]:checked + label.foret:before {
   background-color: #cae9da;
 }
-/* line 182, ../sass/admin.scss */
+/* line 185, ../sass/admin.scss */
 .container input[type=checkbox]:checked + label.mer:before {
   background-color: #ecf5fc;
 }
-/* line 185, ../sass/admin.scss */
+/* line 188, ../sass/admin.scss */
 .container input[type=checkbox]:checked + label.montagne:before {
   background-color: #f7e2f6;
 }
-/* line 189, ../sass/admin.scss */
+/* line 192, ../sass/admin.scss */
 .container label.marais:before {
   content: 'Marais';
 }
-/* line 192, ../sass/admin.scss */
+/* line 195, ../sass/admin.scss */
 .container label.foret:before {
   content: 'Forêt';
 }
-/* line 195, ../sass/admin.scss */
+/* line 198, ../sass/admin.scss */
 .container label.mer:before {
   content: 'Mer';
 }
-/* line 198, ../sass/admin.scss */
+/* line 201, ../sass/admin.scss */
 .container label.montagne:before {
   content: 'Montagne';
 }

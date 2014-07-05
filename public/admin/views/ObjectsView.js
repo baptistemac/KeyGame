@@ -35,8 +35,9 @@ var KeyGame = (function(keygame) {
       
       var id = this.get_new_id();
       var new_screen = {
-        "id"    : id,
-        "name"  : "New object"
+        "id"      : id,
+        "name"    : "newobject",
+        "quantity": 0
       };
       this.mainview.json.objects.push(new_screen);
       this.render(this.mainview.json);

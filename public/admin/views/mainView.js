@@ -66,7 +66,7 @@ var KeyGame = (function(keygame) {
           console.table( data.keyboards.qwerty_fr );
           console.table( data.fields );
           console.table( data.screens );
-          console.table( data.screens_with_objects );
+          console.table( data.screens_objects );
           console.table( data.objects );
           that.json = data;
           that.render();

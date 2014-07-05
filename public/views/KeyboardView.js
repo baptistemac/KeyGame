@@ -16,8 +16,9 @@ var KeyGame = (function(keygame) {
     events : {
     },
 
+    /*
     // Affichage du terrain sur le clavier
-    display_field_onKeyboard: function ( args ) {
+    display_fields_onKeyboard: function ( args ) {
       var that = this;
       var fields = args.mapview.fields;
       var double_keys = args.mapview.double_keys;
@@ -34,16 +35,41 @@ var KeyGame = (function(keygame) {
           }); 
       }); 
     },
+    */
 
-    // Mise à jour de la class .double sur les touches présentes en double
-    // qui rende impossible la detection de proximité.
-    display_doubleKeys_onKeyboard: function ( args ) {
+    // Affichage de la map sur le clavier
+    display_map_onKeyboard : function ( args ) {
       var that = this;
-      var double_keys = args.double_keys;
-      _.each(double_keys, function(key) {
-        that.$el.find("> .key-"+key).addClass("double");
+      var mapview = args.mapview;
+      var map = mapview.map;
+      var double_keys = mapview.double_keys;
+      var fields = mapview.fields;
+      var objects = mapview.objects;
+      console.log("display_objects_onKeyboard", map);
+
+      _.each( map, function(mapItem){
+
+        var curr = that.$el.find(".key-"+mapItem.key);
+
+        // Affichage des touches en double
+        var double_key = _.contains( double_keys, mapItem.key ) || false;
+        if (double_key) curr.addClass( "double" );
+
+        // Affichage du terrain
+        var fieldName = _.where( fields, { "id": mapItem.field_id } )[0].name || "";
+        curr.addClass( fieldName );
+
+        // Affichage des objets
+        if ( mapItem.objects ) {
+          _.each( mapItem.objects, function(o) {
+            var objectName = _.where( objects, { "id": o.object_id } )[0].name || "";
+            curr.addClass( "object "+objectName+" "+o.html_id );
+          });
+        }
+
       });
     },
+
 
     // Mise à jour de la class .press sur la touche appuyée
     display_press_onKeyboard: function (k) {
@@ -63,6 +89,11 @@ var KeyGame = (function(keygame) {
 
     display_princess: function (k) {
       this.$el.find("> .key-"+k).addClass("princesse");
+    },
+
+    reset_keyboard: function () {
+      // Enlever les objets...
+      // Rebuild d'un template du keyboard ?
     },
 
     position: function () {

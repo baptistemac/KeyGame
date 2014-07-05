@@ -10,26 +10,23 @@
 
   <div class="container">
 
-    <!-- /*======= Screen =======*/ 
-    <script type="text/template" id="screens_template">
-      /*
-      {{#item}}
-        <div class="screen" style="background-color:{{color}}; {{#pattern}}background-image:url('assets/img/{{pattern}}');{{/pattern}}">
-          <div class="box"><p>
-            {{{text}}}
-            {{{answers}}}
-            </p>
-          </div>
-        </div>
-      {{/item}}
-      */
+    <!-- /*======= Compass =======*/ -->
+    <script type="text/template" id="compass_template">
+      <div class="compass2">
+        <div class="character princess"></div>
+
+        {{#objets}}
+          <div class="object {{name}}" id="object{{id}}-{{index}}">{{name}}</div>
+        {{/objets}}
+
+        <div class="circle"></div>
+        <div class="circle2"></div>
+      </div>
     </script>
-    -->
+    
     
     <div class="screen">
       <div class="compass">
-        <div class="character princess"></div>
-        <div class="circle">S</div>
       </div>
       <div class="box"></div>
     </div>

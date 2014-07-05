@@ -4,20 +4,21 @@
   width: 200px;
   height: 200px;
   margin: 0 auto;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-  border-radius: 50%;
-  border: 2px solid rgba(0, 0, 0, 0.5);
 }
-/* line 11, ../sass/boussole.scss */
-.compass .circle {
+/* line 10, ../sass/boussole.scss */
+.compass .compass2 {
+  position: absolute;
+  top: 100px;
+  left: 100px;
+}
+/* line 16, ../sass/boussole.scss */
+.compass .compass2 .circle {
   position: absolute;
   width: 40px;
   height: 40px;
-  top: 81px;
-  left: 79px;
+  top: 0px;
+  left: 0px;
+  margin: -20px 0 0 -20px;
   -webkit-border-radius: 6px;
   -moz-border-radius: 6px;
   -ms-border-radius: 6px;
@@ -27,12 +28,26 @@
   font-size: 1.2em;
   line-height: 1.6em;
 }
-/* line 23, ../sass/boussole.scss */
-.compass .character {
+/* line 29, ../sass/boussole.scss */
+.compass .compass2 .circle2 {
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 200px;
+  height: 200px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.5);
+}
+/* line 39, ../sass/boussole.scss */
+.compass .compass2 .character {
   position: absolute;
   width: 20px;
   height: 20px;
-  margin: 90px 0px 0px 90px;
+  margin: -10px 0px 0px -10px;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   -ms-border-radius: 50%;
@@ -43,7 +58,28 @@
   -o-transition: top 0.5s ease-in-out, left 0.5s ease-in-out;
   transition: top 0.5s ease-in-out, left 0.5s ease-in-out;
 }
-/* line 31, ../sass/boussole.scss */
-.compass .character.princess {
+/* line 47, ../sass/boussole.scss */
+.compass .compass2 .character.princess {
   background-color: pink;
+}
+/* line 52, ../sass/boussole.scss */
+.compass .compass2 .object {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0px 0px -10px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-transition: top 0.5s ease-in-out, left 0.5s ease-in-out;
+  -moz-transition: top 0.5s ease-in-out, left 0.5s ease-in-out;
+  -o-transition: top 0.5s ease-in-out, left 0.5s ease-in-out;
+  transition: top 0.5s ease-in-out, left 0.5s ease-in-out;
+  background-color: grey;
+}
+/* line 60, ../sass/boussole.scss */
+.compass .compass2 .object.hat {
+  background-color: red;
 }

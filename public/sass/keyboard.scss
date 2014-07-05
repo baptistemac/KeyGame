@@ -4,10 +4,10 @@
 	position: absolute;
 	width: 466px;	
 	height: 160px;
-	bottom: 100px;
+	bottom: 0px;
 	left: 50%;
 	margin-left: -233px;
-	opacity: 0;
+	//opacity: 0;	
 
 	li {
 		position: relative;
@@ -19,6 +19,7 @@
 		font-size: .6em;
 		line-height: 10px;
 		text-align: center;
+		text-indent: -9999px; // Enlève les lettres sur les touches
 		background: rgba(255,255,255,.3);
 		border: 1px solid rgba(255,255,255,.3);
 		@include border-radius(2px);
@@ -46,7 +47,7 @@
 		top: 32px;
 		right: 2px;
 		padding: 12px 4px 0 0;
-		&:before {
+		&::before {
 			content: '';
 			position: absolute;
 			width: 9px;
@@ -84,6 +85,7 @@
 	.double {
 		@include opacity(.3);
 	}
+	
 
 	// Terrain
 	.marais {
@@ -99,34 +101,52 @@
 		background-color: #f7e2f6;
 	}
 	// Fin de terrain
+	
 
-	// Bonus et malus
-	.bonus1 {
+	// Objets
+	.object {
 		background-image: url('../assets/img/objects/hat.png');
 		background-repeat: no-repeat;
 		background-size: 100%;
-	}
-	.bonus2 {
+		
+		&.hat {
+		}
+		&.seehistrap {
+		}
+		&.newobject {
+		}
 
 	}
-	.malus1 {
+	// Fin de objets
+	
 
-	}
-	// Fin de bonus et malus
-
-	// Changeant
+	// Personnages
 	.press {
 		border-color: rgba(0,0,0,.3);
 	}
-	.hero {
-		&:after {
+	.hero, .princess, .rival {
+		&::after {
 			content: '';
 			display: block;
-			width: 26px;
-			height: 26px;
-			margin: -19px auto 0 auto;
-			border: 1px solid rgba(0,0,0,.3);
+			width: 16px;
+			height: 16px;
+			margin: -15px auto 0 auto;
 			@include border-radius(50%);
+		}
+	}
+	.hero {
+		&::after {
+	  		background: slateblue;
+		}
+	}
+	.princess {
+		&::after {
+	  		background: hotpink;
+		}
+	}
+	.rival {
+		&::after {
+	  		background: grey;
 		}
 	}
 	.proximity {
@@ -135,11 +155,5 @@
 		&.bottom { background: Royalblue; }
 		&.left { background: Royalblue; }
 	}
-	.princess {
-	  background: pink;
-	}
-	.rival {
-		background: red;
-	}
-	// Fin de changeant
+	// Fin de personnages
 }

@@ -177,25 +177,21 @@
 	"screens": [
 		{
 			"id": 0,
-			"type": "welcome",
-			"title": "Touche Princesse",
-			"text": "L'aventure commence sur la touche Espace.",
+			"title": "Where the fuck is this princess?",
+			"text": "I have no fucking idea...",
 			"color": "LightGreen",
 			"sound": "",
 			"pattern": "",
-			"forcekey": [
-				32
-			],
-			"forcekey_todo": [
+			"forcekeys_todo": [
 				{
 					"key": 32,
 					"screen": 2
 				}
-			]
+			],
+			"forcekeys": ""
 		},
 		{
 			"id": 1,
-			"type": "",
 			"title": "<font face=\"Josefin Sans, sans-serif\">sound</font>",
 			"text": "yes",
 			"color": "Plum",
@@ -207,7 +203,6 @@
 		},
 		{
 			"id": 2,
-			"type": "",
 			"title": "de l'eau",
 			"text": "et encore de l'eau",
 			"color": "PaleTurquoise",
@@ -219,7 +214,6 @@
 		},
 		{
 			"id": 3,
-			"type": "",
 			"title": "Le sol n'est pas trés solide ici.",
 			"text": "Tu va devoir passer ton tour.",
 			"color": "Salmon",
@@ -279,34 +273,31 @@
 	"screens_specials": [
 		{
 			"id": 0,
-			"type": "welcome",
-			"title": "Welcome budy!",
-			"text": "Va donc sur la touche ESPACE pour commencer.",
+			"name": "welcome",
+			"title": "<span style=\"font-family: 'Josefin Sans', sans-serif; font-weight: 600; display: inline !important;\">Touche Princesse</span>",
+			"text": "<span style=\"font-family: 'Josefin Sans', sans-serif; font-weight: 600; display: inline !important;\">L'aventure commence sur la touche Espace.</span>",
 			"color": "LightGreen",
 			"sound": "",
 			"pattern": "",
-			"forcekey": [
-				32
-			],
-			"forcekey_todo": [
-				{
-					"key": 32,
-					"screen": 2
-				}
-			]
+			"forcekeys": "32"
 		},
 		{
 			"id": 1,
 			"title": "Yeah! Tu as trouvé la princesse!<br>",
 			"color": "HotPink",
 			"text": "Chapeau bas",
-			"pattern": "pattern",
-			"sound": "sound",
-			"type": "findprincess",
-			"forcekeys": "37"
+			"pattern": "",
+			"sound": "",
+			"name": "princessfind",
+			"forcekeys": ""
 		},
 		{
 			"id": 2,
+			"title": "New special screen",
+			"color": "lightgrey"
+		},
+		{
+			"id": 3,
 			"title": "New special screen",
 			"color": "lightgrey"
 		}
@@ -314,7 +305,7 @@
 	"screens_with_objects": [
 		{
 			"id": "7",
-			"type": "",
+			"name": "",
 			"title": "Ho un chapeau d'invisibilité! Je le prends, ça peut toujours servir.",
 			"color": "LightGreen",
 			"objects_id": [
@@ -323,7 +314,7 @@
 		},
 		{
 			"id": "8",
-			"type": "!",
+			"name": "!",
 			"title": "C'est quoi ce truc sur le sol? Ho un outil pour améliorer ma boussole.",
 			"color": "LightGreen",
 			"objects_id": [

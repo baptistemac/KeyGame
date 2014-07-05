@@ -114,7 +114,10 @@ a {
 .container {
   margin-bottom: 60px;
   margin-top: 66px;
-
+  
+  .screen:last-child {
+    margin-bottom: 60px;
+  }
   .screen, .object {
     position: relative;
     height: auto;

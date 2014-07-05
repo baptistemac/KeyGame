@@ -8,7 +8,8 @@ var KeyGame = (function(keygame) {
     keyboards             : [],
     fields                : [],
     screens               : [],
-    screens_with_objects  : [],
+    screens_specials      : [],
+    screens_objects       : [],
     objects               : [],
 
     // Création de la map à partir du json data.json
@@ -91,31 +92,49 @@ var KeyGame = (function(keygame) {
     ],
     */
 
-    initialize: function () {
+    initialize: function ( data ) {
       console.log("initialize MapView");
       this.compassView = new KeyGame.Views.CompassView();
+
+      //this.json = data;
+      this.keyboard               = data.keyboards[this.keyboard_type];
+      this.fields                 = data.fields;
+      this.screens                = data.screens;
+      this.screens_specials       = data.screens_specials;
+      this.screens_objects        = data.screens_objects;
+      this.objects                = data.objects;
+
+      var row = this.keyboard;
+      this.keys = row[0].concat(row[1],row[2],row[3],row[4],row[5]);
+
+    },
+
+
+    initialize_characters: function () {
+      // Initialisation des personnages
+      this.hero       = new keygame.Models.Characters( { "name": "hero", boussole: true } );
+      this.hero.setKey(32);
+
+      this.princess   = new keygame.Models.Characters( { "name": "princess" } );
+      // Positionnement aléatoire de la princesse
+      this.setPrincessKey( this.princess );
+
+      this.rival      = new keygame.Models.Characters( { "name": "rival" } );
+      window.mainView.rivalView  = new keygame.Views.RivalView  ( { "model": this.rival } );
     },
     
-    build_map: function( data ) {
-        console.log("build_map MapView", data);
 
-        this.template = $("#screens_template").html();
-        this.json = data;
-        this.keyboard               = data.keyboards[this.keyboard_type];
-        this.fields                 = data.fields;
-        this.screens                = data.screens;
-        this.screens_with_objects   = data.screens_with_objects;
-        this.objects                = data.objects;
-
-        // Initialialisation du terrain
-        //this.fieldView = new KeyGame.Views.FieldView( {parent:this} );
-
+    build_map: function() {
+        console.log("build_map MapView");
 
         // On créer l'objet map qui va contenir pour chaque touche, toutes les informations necessaires.
         // Pour chaque touche,
+        
+        // Reset de la map si recommencer
+        this.map = [];
+
+        
         that = this;
-        var row = this.keyboard;
-        this.keys = row[0].concat(row[1],row[2],row[3],row[4],row[5]);
         //var key_x = 0; // to do
         //var key_y = 0;
 
@@ -137,6 +156,7 @@ var KeyGame = (function(keygame) {
           // Attribution de l'écran correspondant
           k.screen_id = that.attribute_screen(k);
 
+          // Ajout de la touche à la map
           that.map.push( k );
 
         });
@@ -155,66 +175,197 @@ var KeyGame = (function(keygame) {
         _.each( this.objects, function(o){
           //console.log("object", o, o.fields_id);
 
-          // Si ils ont un terrain défini, on leur attribu une touche avec ce terrain.
-          if ( o.fields_id && o.fields_id.length ) {
-            screenField = _.filter( screenField, function(screen) {
-              return _.contains(o.fields_id, screen.field_id );
-            });
-          }
-          // Puis on en choisi au hasard parmis le tableau
-          var rand = Math.floor(Math.random() * screenField.length);
-          var rand_key = screenField[rand].key;
-          //console.log("rand_key", rand_key );
-          var map_key = _.where( that.map, { key: rand_key } )[0];
-          //console.log("map_key", map_key );
-          map_key.object_id = o.id;
+          // Si la quantité est à 0
+          if ( o.quantity <= 0 ) return false;
 
-          // On a déjà attribué l'objet à une touche,
-          // on va maintenant attribuer un screen_with_objects à cette même touche.
-          var screenObject = _.filter( that.screens_with_objects, function(screen) {
-            return _.contains( screen.objects_id, o.id);
-          });
-          //console.log("screenObject", screenObject);
-          var rand2 = Math.floor(Math.random() * screenObject.length);
-          map_key.objectscreen_id = screenObject[rand2];
+          console.log("object", o.name, "quantity", o.quantity);
+
+          // Pour chaque quantité d'objet
+          for ( var index=0; index < o.quantity; index++ ) {
+
+            // Si ils ont un terrain défini, on leur attribu une touche avec ce terrain.
+            if ( o.fields_id && o.fields_id.length ) {
+              screenField_Fitered = _.filter( screenField, function(screen) {
+                return _.contains(o.fields_id, screen.field_id );
+              });
+            }
+            // Puis on en choisi au hasard parmis le tableau
+            var rand = Math.floor(Math.random() * screenField_Fitered.length);
+            var rand_key = screenField_Fitered[rand].key;
+            var mapitem = _.where( that.map, { key: rand_key } )[0];
+
+            // On a déjà attribué l'objet à une touche,
+            // on va maintenant attribuer un screen_with_objects à cette même touche.
+            console.log("o.id", o.id);
+            var screenObject = _.filter( that.screens_objects, function(screen) {
+              return _.contains( screen.objects_id, o.id);
+            });
+            console.log("that.screens_objects", that.screens_objects);
+
+            rand = Math.floor(Math.random() * screenObject.length);
+            console.log(screenObject[rand]);
+            var screen_id = screenObject[rand].id;
+
+            mapitem.objects = mapitem.objects || [];
+            mapitem.objects.push({ "object_id": o.id , "html_id": "object"+o.id+"-"+index , "screen_id": screen_id });
+
+          }
+
         });
 
         console.table(this.map);
 
+        this.initialize_characters();
 
-        // Affichage des boutons en double sur le clavier
-        window.keyboard.display_doubleKeys_onKeyboard( { double_keys: this.double_keys } );
-        
-        // Affichage du terrain sur le clavier
-        window.keyboard.display_field_onKeyboard( { mapview: this } );
+        // Affichage de la map sur le clavier
+        window.keyboard.display_map_onKeyboard( { mapview: this } );
 
+        // Affichage de la map sur la boussole
+        this.compassView.build( { mapview: this } );
 
-        // On est enfin prêt à lancer l'écran d'accueil du jeu!
-        mainView.render();
     },
+
+
     
-    
-    render: function(screen) {
-      console.log("MapView render", screen);
-      this.curr_screen = screen;
+    proceed: function( e, key ) {
+      console.log("MapView proceed", key );
+
+      var mapitem = _.where( this.map, { "key": key } )[0];
+      var screen = _.where( this.screens, { "id": mapitem.screen_id } )[0];
+
+      console.log( "mapitem", mapitem );
+      console.log( "screen", screen );
+
+      // Affichage du bouton appuyé (.press)
+
+      window.keyboard.display_press_onKeyboard(key);
+
+
+      //  Vérifi si la touche est autorisée par l'écran encore en cours.
+      // var forcekeys = [{"key":32, "screen":"didactitiel"}];
+      var that = this;
+      var forcekeys = this.curr_screen.forcekeys || [];
+      var forcekeys_keys = _.pluck(forcekeys, 'key');
+      var screen_from_forcekey = undefined;
+      if ( forcekeys.length ) {
+        if( _.contains( forcekeys_keys, key ) ) {
+        var item = _.where( forcekeys, { "key": key } )[0];
+
+        // Exception: si recommencer
+        if ( item.screen == "recommencer" ) {
+          console.log("On remélange les cartes");
+          window.mainView.reset( "recommencer" );
+          return false;
+        }
+
+        screen_from_forcekey = _.where( that.screens_specials, { "name": item.screen } )[0];
+        } else {
+          return false;
+        }
+      }
+
+      /*
+      //console.log("forcekeys", this.curr_screen, forcekeys, key);
+      if ( forcekeys && !_.contains( forcekeys, key ) ) {
+        console.log("[info] Impossible de se déplacer ailleurs que sur les touches :", forcekeys );
+        // dev: Pomme+R provoque quand même le rafraichissement de la page
+        if ( key==82 && e.metaKey) {
+          console.log("rafraichissement");
+        } else {
+          return false;
+        }
+      }
+      */
+
+      // Positionne le hero
+
+      this.hero.setKey(key);
+      //window.keyboard.position();
       
+
+      //  Vérifi si il y a la princesse
+
+      if ( key == this.princess.getKey() ) {
+        console.log("princessfind");
+        this.render_specialScreen("princessfind");
+        window.mainView.rivalView.perdu();
+        return false;
+      }
+
+      // Si forcekey à été rempli
+
+      if ( screen_from_forcekey ) {
+        this.render( screen_from_forcekey );
+        return false;
+      }
+
+
+      // on vérifi si il y a des objets sur l'écran appelé
+
+      if ( mapitem.objects && mapitem.objects.length ) {
+        this.render_objetsScreen( mapitem.objects[0].screen_id );
+        return false;
+      }
+
+
+      // Vérifi si il y a le rival
+
+      if ( key == this.rival.getKey() ) {
+        console.log("fight");
+        this.render_specialScreen("fight");
+        return false;
+      }
+
+      this.render_screenKey(key);
+      
+
+      window.keyboard.display_press_onKeyboard(key);
+
+    },
+
+
+    render: function( screen ) {
+      console.log("MapView render", screen);
+
+      // Évite les erreurs d'un screen = null.
+      if (!screen) return false;
+
+      // L'écran appelé est officiellement l'écran courant.
+      this.curr_screen = screen;
+
       // Lancement du son si il y en a
+
       if ( screen.sound && screen.sound.length ) {
         console.log("lancement du son", screen.sound);
         window.play( screen.sound );
       }
 
+
       // Mise à jour de l'écran
-      this.$el.css('background-color', screen.color);
-      this.$el.find("> .box").addClass("box_old");
+
+      this.$el.css('background-color', screen.color)
+      .find("> .box").addClass("box_old");
       var transitionEnd = "transitionend webkitTransitionEnd oTransitionEnd MSTransitionEnd";
+
+      var new_html =  '';
+            if ( screen.title && screen.title.length )
+              new_html += '<p class="title">'+(screen.title||"")+'</p>';
+            if ( screen.text && screen.text.length )
+              new_html += '<p class="text">'+(screen.text||"")+'</p>';
+            if ( screen.text_keys && screen.text_keys.length )
+              _.each(screen.text_keys, function (text_key) {
+              new_html += '<span class="text-key key-'+text_key+'"></span>';  
+              });
+
       this.$el.find("> .box").bind( transitionEnd, function(){
         console.log("transitionEnd");
         $(this).unbind(transitionEnd).removeClass("box_old")
-        .html('<p class="title">'+(screen.title||"")+'</p><p class="text">'+(screen.text||"")+'</p>');
+        .html(new_html);
       });
       
+
       // Mise à jour de la boussole
+
       this.compassView.update( this.curr_screen.attribute_key );
 
     },
@@ -296,24 +447,35 @@ var KeyGame = (function(keygame) {
       return _.where(this.screens, {type: value})[0];
     },
 
-    get_curr_screen_ForceKey: function () {
+    get_curr_screen_ForceKeys: function () {
       //console.log("get_curr_screen_ForceKey", this.curr_screen);
-      return this.curr_screen.forcekey || null;
+      return this.curr_screen.forcekeys || null;
     },
 
-    render_screenKey:function(value) {
+    get_specialscreen_fromName: function (name) {
+      return _.where( this.screens_specials, { "name": name })[0] || null;
+    },
+
+    get_objetsscreen_fromID: function(id) {
+      return _.where( this.screens_objects, { "id": id })[0] || null;
+    },
+
+    render_screenKey: function (value) {
       var screen = this.get_screen_fromKey(value);
       this.render( screen );
     },
 
-    render_screenType:function(value) {
-      var screen = this.get_screen_fromType(value);
-      //console.log("render_screenType", screen);
+    render_specialScreen: function (name) {
+      var screen = this.get_specialscreen_fromName(name);
       this.render( screen );
     },
 
+    render_objetsScreen: function (id) {
+      var screen = this.get_objetsscreen_fromID(id);
+      this.render( screen );
+    }
 
-
+    /*
     detectRivalProximity: function (_k) {
       var k = _k;
       var keysProximity = this.detectKeyProximity(k);
@@ -352,7 +514,7 @@ var KeyGame = (function(keygame) {
       [  1  K  1  ]
       [  0  1  1  ]
       */
-
+/*
       var top = [];
       var right = [];
       var bottom = [];
@@ -436,6 +598,7 @@ var KeyGame = (function(keygame) {
     remove_class_from_keypress: function () {
       $(this.el).find("li").removeClass("proximity top right bottom left");
     }
+    */
 
   });
 

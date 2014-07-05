@@ -4,14 +4,48 @@ var KeyGame = (function(keygame) {
 
   	el: $(".compass"),
 
+
+
     initialize: function () {
       console.log("initialize CompassView");
+      this.template = $("#compass_template").html();
+    },
+
+    build: function( args ) {
+    	this.mapview = args.mapview;
+    	console.log("build CompassView", this.mapview.objets);
+
+    	var renderedContent = Mustache.to_html(this.template, {
+			objets : [
+			{
+				id: 1,
+				index: 0,
+				name: "test"
+			},
+			{
+				id: 1,
+				index: 1,
+				name: "test"
+			},
+			{
+				id: 2,
+				index: 0,
+				name: "yo"
+			}
+			]
+    	});
+    	this.$el.html(renderedContent);
+
     },
 
     render: function ( compass ) {
       console.log("render CompassView", compass);
       $(this.el).find(".princess").css({ top: compass.princess.top+"px", left: compass.princess.left+"px" })
       .siblings(".circle").text( compass.key+"" );
+      
+      //_.each( objets, )
+      //.end().find("#object1-0").css({ top: compass.princess.top+"px", left: compass.princess.left+"px" })
+
     },
 
     update: function ( key ) {
@@ -27,14 +61,26 @@ var KeyGame = (function(keygame) {
     	console.log("princess_pos", princess_pos, "hero_pos", hero_pos);
 
     	var char = this.get_letter(key);
+    	console.log("char", char, key);
 
     	var compass = {
     		key: char,
     		princess: {
 	    		top: princess_pos.top-hero_pos.top,
 	    		left: princess_pos.left-hero_pos.left
-	    	}
+	    	},
+	    	objets : [
+	    		{
+	    			id: "objet1-0",
+	    			top: princess_pos.top-hero_pos.top,
+	    			left: princess_pos.left-hero_pos.left
+	    		}
+	    	]
     	}
+
+    	// Update des objets
+    	//_.each( this.mapview.map,  )
+
     	this.render( compass );
     },
 

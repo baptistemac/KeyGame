@@ -17,7 +17,12 @@ var KeyGame = (function(keygame) {
 
     /* les getters et les setters à l'ancienne */
     // ...
-    setKey: function( value ) {
+
+    getKey: function () {
+      return this.attributes.key;
+    },
+
+    setKey: function ( value ) {
       this.set("key",value);
       this.attributes.tracker.push(value);
       window.keyboard.display_characterKey( this.attributes );
